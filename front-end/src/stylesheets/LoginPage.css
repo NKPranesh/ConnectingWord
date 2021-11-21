@@ -1,0 +1,13 @@
+.LPBody {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 90px;
+  height: calc(100vh - 140px);
+}
+
+.LPBody img {
+  height: 400px;
+  padding-left: 60px;
+}
