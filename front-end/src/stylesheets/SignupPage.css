@@ -1,0 +1,13 @@
+.SPBody {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 90px;
+  height: calc(100vh - 100px);
+}
+
+.SPBody img {
+  height: 370px;
+  padding-left: 60px;
+}
