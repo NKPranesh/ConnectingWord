@@ -1,0 +1,54 @@
+.SBInput {
+  border-color: rgba(103, 83, 253, 1);
+  border-width: 1.5px;
+  border-radius: 6px;
+  padding: 8px 6px;
+  width: 800px;
+  text-align: center;
+  margin: 0;
+}
+
+.SBResultsDiv {
+  width: 815px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgb(0 0 0 / 10%) 0px 0px 0px 0px, rgb(0 0 0 / 10%) 0px 4px 11px;
+  z-index: 10;
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.SBSearchResult {
+  padding: 10px 20px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgba(202, 202, 202, 0.59);
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.SBSearchResult:hover {
+  background-color: rgba(202, 202, 202, 0.59);
+}
+
+.SBAddFriendButton {
+  border-radius: 6px;
+  padding: 3px 7px;
+  border: none;
+  background-color: black;
+  color: white;
+  font-weight: 500;
+  box-shadow: 0px 0px 2px black;
+  cursor: pointer;
+}
+
+.SBFriendRequestSent,
+.SBFriends {
+  border-radius: 6px;
+  padding: 3px 7px;
+  border: none;
+  background-color: rgba(103, 83, 253, 1);
+  color: white;
+  font-weight: 500;
+  box-shadow: 0px 0px 2px black;
+}
