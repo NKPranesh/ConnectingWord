@@ -1,5 +1,6 @@
 import React from 'react';
 import "../stylesheets/signupBox.css";
+import LocationSvg from "../media/LocationSvg.svg";
 class SignupBox extends React.Component {
   render(){
     return (
@@ -19,8 +20,24 @@ class SignupBox extends React.Component {
                 <label className="SBLocationLabel" for="SBLocationInput">
                     Location
                 </label>
+                <img className="SBLocationImg" src={LocationSvg} alt="img" onClick={this.props.mapDisplay.mapDisplayHandle} />
                  <br/>
-                <input className="SBLocationInput SBInput" type="text" />
+            </div>
+            <div className="SBPassword">
+            <div className="SBPassword1Div">
+                <label className="SBPassword1Label" for="SBPassword1Input">
+                    Latitude
+                </label>
+                 <br/>
+                <input className="SBPassword1Input SBInputpassword" type="number" value={this.props.location.displayLatitude}/>
+            </div>
+            <div className="SBPassword2Div">
+                <label className="SBPassword2Label" for="SBPassword2Input">
+                    Longitude
+                </label>
+                 <br/>
+                <input className="SBPassword2Input SBInputpassword" type="number" value={this.props.location.displayLongitude}/>
+            </div>
             </div>
             <div className="SBEmailDiv">
                 <label className="SBEmailLabel" for="SBEmailInput">

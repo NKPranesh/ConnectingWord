@@ -8,7 +8,7 @@
   z-index: 10;
   max-height: 300px;
   border-radius: 6px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .Open {

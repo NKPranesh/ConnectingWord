@@ -59,3 +59,22 @@
   margin-top: 10px;
   cursor: pointer;
 }
+.SBLocationLabel{
+  color: rgba(103, 83, 253, 1);
+  font-weight: 600;
+  font-size: 17px;
+}
+.SBLocationImg{
+  width :25px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.SBLocationDiv{
+  margin-top: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 130px;
+  justify-content: space-between;
+}
