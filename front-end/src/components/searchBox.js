@@ -62,7 +62,7 @@ class SearchBox extends React.Component {
       <div className="SearchBoxMainDiv">
         <input
           type="text"
-          className="SBInput"
+          className="SEInput"
           placeholder="&#128269; Search"
           onChange={(e) => {
             let newState = { ...this.state };
@@ -73,22 +73,22 @@ class SearchBox extends React.Component {
             }, 1);
           }}
         />
-        <div className="SBResultsDiv">
+        <div className="SEResultsDiv">
           {this.state.searchResults.map((user) => {
             let index = this.state.searchResults.indexOf(user);
             return (
-              <div key={index} className="SBSearchResult">
+              <div key={index} className="SESearchResult">
                 <p>{user.name}</p>
                 {user.email && user.friendshipStatus === -1 && (
-                  <button className="SBAddFriendButton">Add Friend</button>
+                  <button className="SEAddFriendButton">Add Friend</button>
                 )}
                 {user.email && user.friendshipStatus === 0 && (
-                  <button className="SBFriendRequestSent">
+                  <button className="SEFriendRequestSent">
                     Friend Request Sent
                   </button>
                 )}
                 {user.email && user.friendshipStatus === 1 && (
-                  <button className="SBFriends">Friends</button>
+                  <button className="SEFriends">Friends</button>
                 )}
               </div>
             );
