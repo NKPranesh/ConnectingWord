@@ -2,7 +2,7 @@ import * as React from 'react';
 import {useState} from 'react';
 import {render} from 'react-dom';
 import MapGL, {GeolocateControl} from 'react-map-gl';
-import DarkMap from "../data/map.json";
+//import DarkMap from "../data/map.json";
 
 
 const MAPBOX_TOKEN = 'pk.eyJ1IjoiY29ubmVjdGluZ3dvcmxkIiwiYSI6ImNrd2l3anlzdDB3bTAycG1kYXVlYnZtaXAifQ.fsAb70tSq-vGoIwjXuqreg'; // Set your mapbox token here
@@ -14,7 +14,7 @@ const geolocateStyle = {
 };
 const positionOptions = {enableHighAccuracy: true};
 
-export default function App() {
+export default function App(props) {
   const [viewport, setViewport] = useState({
     latitude: 37.8,
     longitude: 96,
@@ -24,7 +24,7 @@ export default function App() {
   });
   const viewportChangeHandle  = (e)=>{
     setViewport(e)
-    this.props.locate.latitudeLongitudeUpdate(e.latitude,e.longitude)
+    props.locate.latitudeLongitudeUpdate(e.latitude,e.longitude)
   }
   return (
     <MapGL
