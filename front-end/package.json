@@ -12,7 +12,6 @@
     "react-map-gl": "^6.1.17",
     "react-router-dom": "^6.0.2",
     "react-scripts": "^4.0.3",
-    "react-search-box": "^2.1.1",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
