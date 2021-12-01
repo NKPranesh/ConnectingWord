@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="495" height="495" viewBox="0 0 495 495">
+  <defs>
+    <filter id="Ellipse_135" x="0" y="0" width="495" height="495" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="40" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_10" data-name="Group 10" transform="translate(-6390 138)">
+    <g transform="matrix(1, 0, 0, 1, 6390, -138)" filter="url(#Ellipse_135)">
+      <circle id="Ellipse_135-2" data-name="Ellipse 135" cx="127.5" cy="127.5" r="127.5" transform="translate(120 120)" fill="#fff"/>
+    </g>
+    <g id="widgets_black_24dp" transform="translate(6556 28)">
+      <path id="Path_256" data-name="Path 256" d="M0,0H163V163H0Z" fill="none"/>
+      <path id="Path_257" data-name="Path 257" d="M70.917,78.5v54.333H125.25V78.5ZM3,132.837H57.333V78.5H3ZM3,10.587V64.92H57.333V10.587Zm92.774-8.9L57.333,40.063,95.774,78.5l38.441-38.441Z" transform="translate(17.375 9.788)" fill="#6753fd"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+.Menudiv img {
+    z-index: 100000;
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+    width: 60px;
+    border: none;
+    outline: none;
+    margin-bottom: 100px;
+}
+button:active {
+transform: translateY(2px);
+}
