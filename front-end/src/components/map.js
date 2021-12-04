@@ -4,7 +4,9 @@ import { StaticMap } from "react-map-gl";
 import { LineLayer, ScatterplotLayer } from "@deck.gl/layers";
 import DarkMap from "../data/map.json";
 import Menusvg from "../media/menuSvg.svg";
-import "../stylesheets/map.css"
+import MapStats from "./mapStats";
+import "../stylesheets/map.css";
+
 const friendshipData = [
   {
     start: [78.4867, 17.385],
@@ -14,11 +16,46 @@ const friendshipData = [
     tooltip: "Hyderbad to Denmark",
   },
   {
-    start: [78.4867, 17.385],
+    start: [77.1025, 28.7041],
     end: [13.4149, 46.8265],
-    fromName: "Hyderabad",
+    fromName: "Delhi",
     toName: "Austria",
-    tooltip: "Hyderabad to Austria",
+    tooltip: "Delhi to Austria",
+  },
+  {
+    start: [78.4867, 17.385],
+    end: [77.1025, 28.7041],
+    fromName: "Hyderabad",
+    toName: "Delhi",
+    tooltip: "Hyderbad to Delhi",
+  },
+  {
+    start: [77.1025, 28.7041],
+    end: [103.8198, 1.3521],
+    fromName: "Delhi",
+    toName: "Singapore",
+    tooltip: "Delhi to Singapore",
+  },
+  {
+    start: [78.4867, 17.385],
+    end: [17.2283, 26.3351],
+    fromName: "Hyderabad",
+    toName: "Libya",
+    tooltip: "Hyderabad to Libya",
+  },
+  {
+    start: [17.2283, 26.3351],
+    end: [3.7492, 40.4637],
+    fromName: "Libya",
+    toName: "Spain",
+    tooltip: "Libya to Spain",
+  },
+  {
+    start: [3.7492, 40.4637],
+    end: [13.4149, 46.8265],
+    fromName: "Spain",
+    toName: "Austria",
+    tooltip: "Spain to Austria",
   },
 ];
 
@@ -40,6 +77,30 @@ const peopleData = [
     name: "Mahesh",
     coordinates: [13.4149, 46.8265],
     tooltip: "Mahesh",
+  },
+  {
+    type: "major",
+    name: "Virat",
+    coordinates: [77.1025, 28.7041],
+    tooltip: "Virat",
+  },
+  {
+    type: "major",
+    name: "Rohit",
+    coordinates: [103.8198, 1.3521],
+    tooltip: "Rohit",
+  },
+  {
+    type: "major",
+    name: "Tarak",
+    coordinates: [17.2283, 26.3351],
+    tooltip: "Tarak",
+  },
+  {
+    type: "major",
+    name: "Charan",
+    coordinates: [3.7492, 40.4637],
+    tooltip: "Charan",
   },
 ];
 
@@ -77,6 +138,9 @@ let INITIAL_VIEW_STATE = {
 const MAP_STYLE = DarkMap;
 
 class Map extends React.Component {
+  state = {
+    mapStatsDisplay: false,
+  };
   render() {
     return (
       <div className="MapDiv">
@@ -95,8 +159,21 @@ class Map extends React.Component {
           />
         </DeckGL>
         <div className="Menudiv">
-       <img src={Menusvg} alt="menusvg" /> 
-      </div>
+          <img
+            src={Menusvg}
+            alt="menusvg"
+            onClick={() => {
+              let newState = { ...this.state };
+              newState.mapStatsDisplay = !newState.mapStatsDisplay;
+              this.setState(newState);
+            }}
+          />
+          {this.state.mapStatsDisplay && (
+            <div className="MapStatsDiv">
+              <MapStats />
+            </div>
+          )}
+        </div>
       </div>
     );
   }

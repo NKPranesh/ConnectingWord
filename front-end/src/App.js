@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LoginPage from "./Containers/LoginPage";
 import SignupPage from "./Containers/SignupPage";
 import UserPage from "./Containers/UserPage";
-import RequestListBox from "./components/requestListBox";
+import MapStats from "./components/mapStats";
 import "./App.css";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/userpage" element={<UserPage />} />
-          <Route path="/test" element={<RequestListBox />} />
+          <Route path="/test" element={<MapStats />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -1,0 +1,102 @@
+.MapStatsMainDiv {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  width: 450px;
+  box-sizing: border-box;
+  background-color: white;
+  min-height: 500px;
+}
+
+.MSGITNoSearch {
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.MSPNYButton,
+.MSGITButton {
+  width: 50%;
+  border: none;
+  padding: 15px 0px;
+  background-color: black;
+  color: white;
+  background-color: black;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+}
+.active {
+  background-color: #6753fd;
+}
+
+.MSPNYDiv {
+  padding: 10px 20px;
+}
+.MSPNYLocationLabel {
+  font-weight: 700;
+  padding-bottom: 5px;
+}
+.MSPNYLocationResultDiv {
+  display: flex;
+  justify-content: space-between;
+}
+
+.MSPNYResultDiv {
+  margin-top: 15px;
+}
+
+.MSPNYResultLabel {
+  font-weight: 700;
+  padding-bottom: 5px;
+}
+
+.MSPNYListDiv {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  overflow: auto;
+  max-height: 220px;
+  margin-bottom: 10px;
+}
+
+.MSPNYListItemDiv {
+  padding: 6px 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.MSPNYName {
+  font-weight: 500;
+}
+
+.MSGITDiv {
+  padding: 10px 20px;
+}
+
+.MSGITSearchInfoDiv {
+  margin-bottom: 15px;
+}
+
+.MSGITName {
+  font-weight: 600;
+}
+
+.MSGITPathsLabel {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.MSGITPathListDiv {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  overflow: auto;
+  max-height: 220px;
+  margin-bottom: 10px;
+}
+
+.MSGITPathDiv {
+  padding: 6px 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.MSGITPath {
+  font-weight: 600;
+  margin: 2px 0px;
+}

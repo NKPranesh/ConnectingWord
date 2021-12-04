@@ -1,0 +1,35 @@
+.GITSBMainDiv {
+  margin-bottom: 10px;
+}
+.GITSBInput {
+  border-color: rgba(103, 83, 253, 1);
+  border-width: 1.5px;
+  border-radius: 6px;
+  padding: 8px 6px;
+  width: 300px;
+  text-align: center;
+  margin: 0;
+}
+
+.GITSBResultsDiv {
+  width: 315px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgb(0 0 0 / 10%) 0px 0px 0px 0px, rgb(0 0 0 / 10%) 0px 4px 11px;
+  z-index: 10;
+  max-height: 300px;
+  overflow: auto;
+}
+
+.GITSBSearchResult {
+  padding: 15px 20px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgba(202, 202, 202, 0.59);
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.GITSBSearchResult:hover {
+  background-color: rgba(202, 202, 202, 0.59);
+}

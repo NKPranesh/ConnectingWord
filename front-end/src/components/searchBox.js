@@ -78,7 +78,17 @@ class SearchBox extends React.Component {
             let index = this.state.searchResults.indexOf(user);
             return (
               <div key={index} className="SESearchResult">
-                <p>{user.name}</p>
+                <p>
+                  {user.name}
+                  <br />
+                  <p
+                    style={{
+                      fontSize: "12px",
+                    }}
+                  >
+                    Email: {user.email}
+                  </p>
+                </p>
                 {user.email && user.friendshipStatus === -1 && (
                   <button className="SEAddFriendButton">Add Friend</button>
                 )}
