@@ -1,7 +1,9 @@
 import React from "react";
 import GITSearchBox from "./gITSearchBox";
 import LocateUser from "./locateUser";
-import GetInTouchImg from "../media/GetInTouch.svg";
+import PNYlist from "../calc/PNYfunc";
+import GITlist from "../calc/GITfunc";
+//import GetInTouchImg from "../media/GetInTouch.svg";
 import "../stylesheets/mapStats.css";
 
 class MapStats extends React.Component {
@@ -32,10 +34,10 @@ class MapStats extends React.Component {
       ["MSD", "Vamshi", "Virat", "Rohit", "Mahesh"],
     ],
   };
-
   gITSearchedDataHandle = (e) => {
     let newState = { ...this.state };
     newState.GITSearchedData = e;
+    newState.GITPathsData=GITlist("pranesh@gmail.com",newState.GITSearchedData.email);
     this.setState(newState);
   };
 
@@ -72,8 +74,8 @@ class MapStats extends React.Component {
         <div className="MSPNYResultDiv">
           <p className="MSPNYResultLabel">People</p>
           <div className="MSPNYListDiv">
-            {this.state.PNYData.map((user) => {
-              let index = this.state.PNYData.indexOf(user);
+            {PNYlist(this.state.latitude,this.state.longitude,"pranesh@gmail.com").map((user) => {
+              let index = user.email;
               return (
                 <div key={index} className="MSPNYListItemDiv">
                   <p className="MSPNYName">{user.name}</p>
@@ -82,7 +84,7 @@ class MapStats extends React.Component {
                     Latitude: {user.latitude} &emsp;&emsp; Longitude:{" "}
                     {user.longitude}
                   </p>
-                  <p className="MSPNYDistance">Distance: {user.distance}</p>
+                  <p className="MSPNYDistance">Distance: {parseFloat(user.distance.toFixed(2))} Km</p>
                 </div>
               );
             })}
@@ -93,6 +95,7 @@ class MapStats extends React.Component {
   };
 
   getGITDiv = () => {
+   // let pathcount=0;
     return (
       <div className="MSGITDiv">
         <GITSearchBox
@@ -121,7 +124,7 @@ class MapStats extends React.Component {
               <p className="MSGITPathsLabel">Possible Paths</p>
               <div className="MSGITPathListDiv">
                 {this.state.GITPathsData.map((path) => {
-                  let index = this.state.GITPathsData.indexOf(path) + 1;
+                  let index=this.state.GITPathsData.indexOf(path);
                   return (
                     <div className="MSGITPathDiv" key={index}>
                       <p className="MSGITPathNo">Path: {index}</p>

@@ -41,6 +41,13 @@ class SignupBox extends React.Component {
             </div>
             <div className="SBEmailDiv">
                 <label className="SBEmailLabel" for="SBEmailInput">
+                    Occupation
+                </label>
+                 <br/>
+                <input className="SBEmailInput SBInput" type="email" />
+            </div>
+            <div className="SBEmailDiv">
+                <label className="SBEmailLabel" for="SBEmailInput">
                     Email
                 </label>
                  <br/>
