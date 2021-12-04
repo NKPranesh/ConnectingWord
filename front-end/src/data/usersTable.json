@@ -2,78 +2,71 @@
   {
     "email": "vamshi@gmail.com",
     "name": "Vamshi Krishna",
-    "latitude": "1.02",
-    "longitude": "1.05",
-    "occupation": "student"
-  },
-  {
-    "email": "venkateshwarulu@gmail.com",
-    "name": "Venkateshwarulu",
-    "latitude": "1.02",
-    "longitude": "1.05",
+    "longitude": "8.6875",
+    "latitude": "54.2501",
     "occupation": "student"
   },
   {
     "email": "varun@gmail.com",
     "name": "Varun",
-    "latitude": "1.02",
-    "longitude": "1.05",
+    "longitude": "1.02",
+    "latitude": "1.05",
     "occupation": "student"
   },
   {
     "email": "venkanna@gmail.com",
     "name": "Venkanna",
-    "latitude": "1.02",
-    "longitude": "1.05",
+    "longitude": "1.02",
+    "latitude": "1.05",
     "occupation": "student"
   },
   {
     "email": "virat@gmail.com",
     "name": "Virat Kohli",
-    "latitude": "1.02",
-    "longitude": "1.05",
+    "longitude": "77.1025",
+    "latitude": "28.7041",
     "occupation": "cricketer"
   },
   {
     "email": "pranesh@gmail.com",
     "name": "Pranesh",
-    "latitude": "1.02",
-    "longitude": "1.05",
+    "longitude": "78.4867",
+    "latitude": "17.385",
     "occupation": "student"
   },
   {
     "email": "mahesh@gmail.com",
     "name": "Mahesh",
-    "latitude": "1.02",
-    "longitude": "1.05",
+    "longitude": "13.4149",
+    "latitude": "46.8265",
     "occupation": "Actor"
   },
   {
     "email": "tarak@gmail.com",
     "name": "NTR",
-    "latitude": "1.02",
-    "longitude": "1.05",
+    "longitude": "17.2283",
+    "latitude": "26.3351",
     "occupation": "Actor"
   },
   {
-    "email": "arjun@gmail.com",
-    "name": "Allu Arjun",
-    "latitude": "1.02",
-    "longitude": "1.05",
+    "email": "rohit@gmail.com",
+    "name": "rohith",
+    "longitude": "103.8198",
+    "latitude": "1.3521",
     "occupation": "Actor"
   },
   {
     "email": "pawan@gmail.com",
     "name": "Pawan Kalyan",
-    "latitude": "1.02",
-    "longitude": "1.05",
+    "longitude": "1.atitude", 
+    "latitude":"1.05",
     "occupation": "Actor"
   },
   {
     "email": "charan@gmail.com",
     "name": "Ram Charan",
-    "latitude": "1.02",
-    "longitude": "1.05",
+    "longitude": "3.7492",
+    "latitude": "40.4637",
     "occupation": "Actor"
   }
 ]
