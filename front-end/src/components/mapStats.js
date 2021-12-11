@@ -1,7 +1,8 @@
 import React from "react";
 import GITSearchBox from "./gITSearchBox";
 import LocateUser from "./locateUser";
-import GetInTouchImg from "../media/GetInTouch.svg";
+import PNYlist from "../calc/PNYfunc";
+import GITlist from "../calc/GITfunc";
 import "../stylesheets/mapStats.css";
 
 class MapStats extends React.Component {
@@ -31,11 +32,44 @@ class MapStats extends React.Component {
       ["MSD", "Teja", "Varun", "Mahesh"],
       ["MSD", "Vamshi", "Virat", "Rohit", "Mahesh"],
     ],
+    distance: null,
+  };
+
+  toRadians = (degrees) => {
+    var pi = Math.PI;
+    return degrees * (pi / 180);
+  };
+
+  calculateDistance = (destLatitide, destLongitude) => {
+    let lon1 = this.toRadians(this.state.longitude);
+    let lon2 = this.toRadians(destLongitude);
+    let lat1 = this.toRadians(this.state.latitude);
+    let lat2 = this.toRadians(destLatitide);
+
+    // Haversine formula
+    let dlon = lon2 - lon1;
+    let dlat = lat2 - lat1;
+    let a =
+      Math.pow(Math.sin(dlat / 2), 2) +
+      Math.cos(lat1) * Math.cos(lat2) * Math.pow(Math.sin(dlon / 2), 2);
+
+    let c = 2 * Math.asin(Math.sqrt(a));
+
+    // Radius of earth in kilometers. Use 3956
+    // for miles
+    let r = 6371;
+
+    return c * r;
   };
 
   gITSearchedDataHandle = (e) => {
     let newState = { ...this.state };
     newState.GITSearchedData = e;
+    newState.GITPathsData = GITlist(
+      "pranesh@gmail.com",
+      newState.GITSearchedData.email
+    );
+    newState.distance = this.calculateDistance(e.latitude, e.longitude);
     this.setState(newState);
   };
 
@@ -72,8 +106,12 @@ class MapStats extends React.Component {
         <div className="MSPNYResultDiv">
           <p className="MSPNYResultLabel">People</p>
           <div className="MSPNYListDiv">
-            {this.state.PNYData.map((user) => {
-              let index = this.state.PNYData.indexOf(user);
+            {PNYlist(
+              this.state.latitude,
+              this.state.longitude,
+              "pranesh@gmail.com"
+            ).map((user) => {
+              let index = user.email;
               return (
                 <div key={index} className="MSPNYListItemDiv">
                   <p className="MSPNYName">{user.name}</p>
@@ -82,7 +120,12 @@ class MapStats extends React.Component {
                     Latitude: {user.latitude} &emsp;&emsp; Longitude:{" "}
                     {user.longitude}
                   </p>
-                  <p className="MSPNYDistance">Distance: {user.distance}</p>
+                  <p className="MSPNYDistance">
+                    Occupation: {user.occupation}{" "}
+                  </p>
+                  <p className="MSPNYDistance">
+                    Distance: {parseFloat(user.distance.toFixed(2))} Km
+                  </p>
                 </div>
               );
             })}
@@ -93,6 +136,7 @@ class MapStats extends React.Component {
   };
 
   getGITDiv = () => {
+    // let pathcount=0;
     return (
       <div className="MSGITDiv">
         <GITSearchBox
@@ -114,14 +158,17 @@ class MapStats extends React.Component {
                 Longitude: {this.state.GITSearchedData.longitude}
               </p>
               <p className="MSGITDistance">
-                Distance: {this.state.GITSearchedData.distance}
+                Occupation: {this.state.GITSearchedData.occupation}
+              </p>
+              <p className="MSGITDistance">
+                Distance: {parseFloat(this.state.distance.toFixed(2))} Km
               </p>
             </div>
             <div className="MSGITPathsDiv">
               <p className="MSGITPathsLabel">Possible Paths</p>
               <div className="MSGITPathListDiv">
                 {this.state.GITPathsData.map((path) => {
-                  let index = this.state.GITPathsData.indexOf(path) + 1;
+                  let index = this.state.GITPathsData.indexOf(path);
                   return (
                     <div className="MSGITPathDiv" key={index}>
                       <p className="MSGITPathNo">Path: {index}</p>

@@ -6,5 +6,21 @@
   {
     "email": "msd@gmail.com",
     "friendEmail": "mahesh@gmail.com"
+  },
+  {
+    "email": "charan@gmail.com",
+    "friendEmail": "mahesh@gmail.com"
+  },
+  {
+    "email": "charan@gmail.com",
+    "friendEmail": "pranesh@gmail.com"
+  },
+  {
+    "email": "pranesh@gmail.com",
+    "friendEmail": "vamshi@gmail.com"
+  },
+  {
+    "email": "vamshi@gmail.com",
+    "friendEmail": "charan@gmail.com"
   }
 ]

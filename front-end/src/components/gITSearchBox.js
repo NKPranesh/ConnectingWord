@@ -1,13 +1,12 @@
 import React from "react";
 import UsersData from "../data/usersTable.json";
 import "../stylesheets/gITSearchBox.css";
-
+import PNYlist from "../calc/PNYfunc";
 class GITSearchBox extends React.Component {
   state = {
     searchResults: [],
     searchQuery: "",
   };
-
   updateSearchResults = () => {
     let newState = { ...this.state };
     newState.searchResults = UsersData.filter((user) => {
@@ -18,7 +17,7 @@ class GITSearchBox extends React.Component {
     if (this.state.searchQuery === "") newState.searchResults = [];
     this.setState(newState);
   };
-
+  //let dist=PNYlist(this.state.searchResults.latitude,this.state.searchResults.longitude,"pranesh@gmail.com");
   render() {
     return (
       <div className="GITSBMainDiv">
@@ -48,7 +47,7 @@ class GITSearchBox extends React.Component {
                     email: user.email,
                     latitude: user.latitude,
                     longitude: user.longitude,
-                    distance: "200km", //-------------------------------------------------------------
+                    occupation: user.occupation,
                   });
                   let newState = { ...this.state };
                   newState.searchQuery = "";
