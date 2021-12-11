@@ -40,14 +40,14 @@ const PNYlist = (latitude,longitude,loginEmail) => {
             // for miles
             let r = 6371; 
             distance.push({name : user.name,email : node,
-            distance : c*r,latitude : user.latitude,longitude : user.longitude});
+            distance : c*r,latitude : user.latitude,longitude : user.longitude,occupation :user.occupation});
         }
         })
     })
     distance.sort((a, b) => {
         return a.distance-b.distance;
     });
-    console.log(distance);
+    //console.log(distance);
             return(
                 distance
             );
