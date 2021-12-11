@@ -24,6 +24,7 @@ function printAllPathsUtil(u, d, isVisited, localPathList) {
     pathLists[pathcount] = [];
     localPathList.map((node) => {
       pathLists[pathcount].push(node);
+      return 0;
     });
     ++pathcount;
     return;

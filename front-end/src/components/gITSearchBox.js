@@ -1,7 +1,6 @@
 import React from "react";
 import UsersData from "../data/usersTable.json";
 import "../stylesheets/gITSearchBox.css";
-import PNYlist from "../calc/PNYfunc";
 class GITSearchBox extends React.Component {
   state = {
     searchResults: [],
