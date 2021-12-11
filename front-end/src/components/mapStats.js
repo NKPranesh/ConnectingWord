@@ -84,6 +84,7 @@ class MapStats extends React.Component {
                     Latitude: {user.latitude} &emsp;&emsp; Longitude:{" "}
                     {user.longitude}
                   </p>
+                  <p className="MSPNYDistance">Occupation: {user.occupation} </p>
                   <p className="MSPNYDistance">Distance: {parseFloat(user.distance.toFixed(2))} Km</p>
                 </div>
               );
@@ -95,7 +96,7 @@ class MapStats extends React.Component {
   };
 
   getGITDiv = () => {
-   // let pathcount=0;
+    // let pathcount=0;
     return (
       <div className="MSGITDiv">
         <GITSearchBox
@@ -115,6 +116,9 @@ class MapStats extends React.Component {
               <p className="MSGITLatitudeLongitude">
                 Latitude: {this.state.GITSearchedData.latitude} &emsp;&emsp;
                 Longitude: {this.state.GITSearchedData.longitude}
+              </p>
+               <p className="MSGITDistance">
+                Occupation: {this.state.GITSearchedData.occupation}
               </p>
               <p className="MSGITDistance">
                 Distance: {this.state.GITSearchedData.distance}
