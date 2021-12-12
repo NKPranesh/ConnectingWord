@@ -14,6 +14,21 @@ class NavbarUser extends React.Component {
     this.setState(newState);
   };
 
+  logoutButtonHandle = async () => {
+    await fetch("/logout", {
+      method: "get",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        window.location.reload(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   render() {
     return (
       <div className="NavbarUserDiv">
@@ -35,7 +50,12 @@ class NavbarUser extends React.Component {
             Request List
           </button>
           <RequestListBox isDisplay={this.state.requestListDisplay} />
-          <button className="NULogoutButton button">Logout</button>
+          <button
+            className="NULogoutButton button"
+            onClick={this.logoutButtonHandle}
+          >
+            Logout
+          </button>
         </div>
       </div>
     );

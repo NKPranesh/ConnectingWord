@@ -1,12 +1,10 @@
 [
   {
     "fromEmail": "msd@gmail.com",
-    "toEmail": "vamshi@gmail.com",
-    "timestamp": ""
+    "toEmail": "vamshi@gmail.com"
   },
   {
     "fromEmail": "msd@gmail.com",
-    "toEmail": "pranesh@gmail.com",
-    "timestamp": ""
+    "toEmail": "pranesh@gmail.com"
   }
 ]

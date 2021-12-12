@@ -23,6 +23,12 @@
   font-size: 15px;
 }
 
+.LBErrorDiv p {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
 .LBEmailDiv,
 .LBPasswordDiv {
   display: flex;

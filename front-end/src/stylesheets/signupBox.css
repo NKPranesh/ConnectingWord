@@ -1,5 +1,5 @@
-.SBsignupBox{
-    border-radius: 8px;
+.SBsignupBox {
+  border-radius: 8px;
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
   width: fit-content;
   display: flex;
@@ -10,37 +10,42 @@
   margin-right: 30px;
   padding-bottom: 10px;
 }
-.SBHeadDiv{
-    padding : 10px 150px;
-    font-size: 34px;
-    font-weight: bold;
-    border-bottom: 1px solid black;
+.SBHeadDiv {
+  padding: 10px 150px;
+  font-size: 34px;
+  font-weight: bold;
+  border-bottom: 1px solid black;
 }
-.SBBodyDiv{
-    padding: 20px 0px;
-    font-size: 14px;
-    font-weight: 400;
+.SBBodyDiv {
+  padding: 20px 0px;
+  font-size: 14px;
+  font-weight: 400;
 }
-.SBPassword{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.SBErrorDiv p {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 5px;
 }
-.SBInputpassword{
-    width: 130px;
-    border-color: rgba(103, 83, 253, 0.53);
-    border-width: 1px;
-    border-radius: 6px;
-    padding: 4px 8px;
-    margin: 8px 0px;
+.SBPassword {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
-.SBInput{
-    border-width: 1px;
-    border-radius: 6px;
-    padding: 4px 8px;
-    width: 300px;
-    border-color: rgba(103, 83, 253, 0.53);
-    margin: 8px 0px;
+.SBInputpassword {
+  width: 130px;
+  border-color: rgba(103, 83, 253, 0.53);
+  border-width: 1px;
+  border-radius: 6px;
+  padding: 4px 8px;
+  margin: 8px 0px;
+}
+.SBInput {
+  border-width: 1px;
+  border-radius: 6px;
+  padding: 4px 8px;
+  width: 300px;
+  border-color: rgba(103, 83, 253, 0.53);
+  margin: 8px 0px;
 }
 .SBSignupButtonDiv {
   display: flex;
@@ -59,18 +64,18 @@
   margin-top: 10px;
   cursor: pointer;
 }
-.SBLocationLabel{
+.SBLocationLabel {
   color: rgba(103, 83, 253, 1);
   font-weight: 600;
   font-size: 17px;
 }
-.SBLocationImg{
-  width :25px;
+.SBLocationImg {
+  width: 25px;
   margin: 0;
   padding: 0;
   cursor: pointer;
 }
-.SBLocationDiv{
+.SBLocationDiv {
   margin-top: 5px;
   display: flex;
   flex-direction: row;
@@ -85,6 +90,6 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }

@@ -1,27 +1,56 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavbarUser from "../components/navbarUser";
 import Map from "../components/map";
+import { useNavigate } from "react-router-dom";
 import "../stylesheets/UserPage.css";
 
-class UserPage extends React.Component {
-  render() {
-    return (
-      <div className="UserPageDiv">
-        <NavbarUser />
-        <div
-          className="UPMapBox"
-          style={{
-            height: "calc(100vh - 60px)",
-            width: "100vw",
-            position: "relative",
-            marginTop: "5px",
-          }}
-        >
-          <Map />
-        </div>
+const UserPage = () => {
+  const navigate = useNavigate();
+
+  const authenticate = async () => {
+    let isAuthenticated = false;
+
+    await fetch("/authenticate", {
+      method: "get",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        if ("status" in responseJson) {
+          isAuthenticated = true;
+          navigate("/userpage");
+        }
+      })
+      .catch((error) => {
+        console.log("error");
+        isAuthenticated = false;
+        navigate("/login");
+      });
+
+    return isAuthenticated;
+  };
+
+  useEffect(() => {
+    authenticate();
+  }, []);
+
+  return (
+    <div className="UserPageDiv">
+      <NavbarUser />
+      <div
+        className="UPMapBox"
+        style={{
+          height: "calc(100vh - 60px)",
+          width: "100vw",
+          position: "relative",
+          marginTop: "5px",
+        }}
+      >
+        <Map />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default UserPage;
