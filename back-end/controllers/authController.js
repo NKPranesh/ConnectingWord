@@ -60,6 +60,7 @@ singup_post = async (req, res) => {
       domain: "connectingworld-api.herokuapp.com",
       //domain: "localhost",
       secure: true,
+      sameSite: "none",
     });
     res.status(201).json({ user: user._id });
   } catch (err) {
@@ -79,6 +80,7 @@ login_post = async (req, res) => {
       domain: "connectingworld-api.herokuapp.com",
       //domain: "localhost",
       secure: true,
+      sameSite: "none",
     });
     res.status(200).json({ user: user._id, token });
   } catch (err) {
@@ -92,6 +94,7 @@ logout_get = (req, res) => {
     domain: "connectingworld-api.herokuapp.com",
     //domain: "localhost",
     secure: true,
+    sameSite: "none",
   });
   res.json({ status: "logged out" });
 };
