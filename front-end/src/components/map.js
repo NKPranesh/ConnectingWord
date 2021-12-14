@@ -35,7 +35,8 @@ let INITIAL_VIEW_STATE = {
   bearing: 0,
 };
 
-const MAP_STYLE = DarkMap;
+const MAP_STYLE =
+  "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json";
 
 class Map extends React.Component {
   edges = [];
