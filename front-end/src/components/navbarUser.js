@@ -2,6 +2,7 @@ import React from "react";
 import Logo from "../media/Logo.svg";
 import SearchBox from "./searchBox";
 import RequestListBox from "./requestListBox";
+import { Link } from "react-router-dom";
 import "../stylesheets/navbarUser.css";
 class NavbarUser extends React.Component {
   state = {
@@ -50,7 +51,9 @@ class NavbarUser extends React.Component {
     return (
       <div className="NavbarUserDiv">
         <div className="NULogoDiv">
-          <img src={Logo} alt="img" />
+          <Link to="/">
+            <img src={Logo} alt="Logo" />
+          </Link>
         </div>
         <div className="NUSearchDiv">
           <SearchBox />
