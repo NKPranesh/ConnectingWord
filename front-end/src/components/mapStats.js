@@ -35,6 +35,41 @@ class MapStats extends React.Component {
     distance: null,
   };
 
+  userEmail = null;
+  userTable = [];
+  nodes = [];
+  getEmailNNodesNUserTable = async () => {
+    await fetch("/friends-list", {
+      method: "get",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then(async (responseJson) => {
+        this.nodes = responseJson.nodes;
+        this.userEmail = responseJson.userEmail;
+        await fetch("/usertable", {
+          method: "get",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+        })
+          .then((response) => response.json())
+          .then((responseJson) => {
+            this.userTable = responseJson;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  componentWillMount() {
+    this.getEmailNNodesNUserTable();
+  }
+
   toRadians = (degrees) => {
     var pi = Math.PI;
     return degrees * (pi / 180);
@@ -66,8 +101,10 @@ class MapStats extends React.Component {
     let newState = { ...this.state };
     newState.GITSearchedData = e;
     newState.GITPathsData = GITlist(
-      "pranesh@gmail.com",
-      newState.GITSearchedData.email
+      this.userEmail,
+      newState.GITSearchedData.email,
+      this.nodes,
+      this.userTable
     );
     newState.distance = this.calculateDistance(e.latitude, e.longitude);
     this.setState(newState);
@@ -109,7 +146,9 @@ class MapStats extends React.Component {
             {PNYlist(
               this.state.latitude,
               this.state.longitude,
-              "pranesh@gmail.com"
+              this.userEmail,
+              this.nodes,
+              this.userTable
             ).map((user) => {
               let index = user.email;
               return (
@@ -117,8 +156,9 @@ class MapStats extends React.Component {
                   <p className="MSPNYName">{user.name}</p>
                   <p className="MSPNYEmail">Email: {user.email}</p>
                   <p className="MSPNYLatitudeLongitude">
-                    Latitude: {user.latitude} &emsp;&emsp; Longitude:{" "}
-                    {user.longitude}
+                    Latitude: {parseFloat(user.latitude).toFixed(4)}{" "}
+                    &emsp;&emsp; Longitude:{" "}
+                    {parseFloat(user.longitude).toFixed(4)}
                   </p>
                   <p className="MSPNYDistance">
                     Occupation: {user.occupation}{" "}
@@ -141,6 +181,8 @@ class MapStats extends React.Component {
       <div className="MSGITDiv">
         <GITSearchBox
           sendSearchData={{ GITDataHandle: this.gITSearchedDataHandle }}
+          nodesData={this.nodes}
+          userEmail={this.userEmail}
         />
         {this.state.GITSearchedData === null ? (
           <div className="MSGITNoSearch">
@@ -154,8 +196,10 @@ class MapStats extends React.Component {
                 Email: {this.state.GITSearchedData.email}
               </p>
               <p className="MSGITLatitudeLongitude">
-                Latitude: {this.state.GITSearchedData.latitude} &emsp;&emsp;
-                Longitude: {this.state.GITSearchedData.longitude}
+                Latitude:{" "}
+                {parseFloat(this.state.GITSearchedData.latitude).toFixed(4)}{" "}
+                &emsp;&emsp; Longitude:{" "}
+                {parseFloat(this.state.GITSearchedData.longitude).toFixed(4)}
               </p>
               <p className="MSGITDistance">
                 Occupation: {this.state.GITSearchedData.occupation}
@@ -168,6 +212,7 @@ class MapStats extends React.Component {
               <p className="MSGITPathsLabel">Possible Paths</p>
               <div className="MSGITPathListDiv">
                 {this.state.GITPathsData.map((path) => {
+                  console.log(this.state.GITPathsData);
                   let index = this.state.GITPathsData.indexOf(path);
                   return (
                     <div className="MSGITPathDiv" key={index}>

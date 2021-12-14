@@ -42,7 +42,25 @@ function printAllPathsUtil(u, d, isVisited, localPathList) {
   isVisited[u] = false;
 }
 
-const GITList = (source, destination) => {
+const GITList = (source, destination, nodesList, userTable) => {
+  nodes = [];
+  adjList = [];
+  pathLists = [];
+  pathcount = 1;
+  for (let i = 0; i < nodesList.length; i++) {
+    nodes.push(nodesList[i].email);
+  }
+
+  for (let i = 0; i < nodes.length; i++) {
+    let friends = [];
+    for (let j = 0; j < userTable.length; j++) {
+      if (userTable[j].friends.includes(nodes[i])) {
+        friends.push(nodes.indexOf(userTable[j].email));
+      }
+    }
+    adjList.push(friends);
+  }
+
   printAllPaths(nodes.indexOf(source), nodes.indexOf(destination));
   return pathLists;
 };

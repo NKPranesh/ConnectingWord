@@ -13,7 +13,23 @@ class SearchBox extends React.Component {
   // 1 - friend
   // -1 - not friend
 
-  addFriendHandle = () => {};
+  addFriendHandle = async (reqEmail) => {
+    await fetch("/add-friend", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({
+        reqEmail: reqEmail,
+      }),
+    })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        this.updateSearchResults();
+      })
+      .catch((error) => {
+        console.log("error");
+      });
+  };
 
   updateSearchResults = () => {
     let UsersTable = [];
@@ -36,14 +52,14 @@ class SearchBox extends React.Component {
         let newUser = { ...user };
         newUser.friendshipStatus = -1;
         for (let u of RequestListTable) {
-          if (u.toEmail === user.email) {
+          if (u.fromEmail === userEmail && u.toEmail === user.email) {
             newUser.friendshipStatus = 0;
             break;
           }
         }
 
         for (let u of FriendsTable) {
-          if (u.friendEmail === user.email) {
+          if (u.email === userEmail && u.friendEmail === user.email) {
             newUser.friendshipStatus = 1;
             break;
           }
@@ -107,7 +123,9 @@ class SearchBox extends React.Component {
                 {user.email && user.friendshipStatus === -1 && (
                   <button
                     className="SEAddFriendButton"
-                    onClick={this.addFriendHandle}
+                    onClick={() => {
+                      this.addFriendHandle(user.email);
+                    }}
                   >
                     Add Friend
                   </button>

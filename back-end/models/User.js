@@ -41,11 +41,18 @@ const userSchema = new mongoose.Schema({
     type: Array,
     required: true,
   },
+  flag: {
+    type: Number,
+    required: true,
+  },
 });
 
 userSchema.pre("save", async function (next) {
-  const salt = await bcrypt.genSalt();
-  this.password = await bcrypt.hash(this.password, salt);
+  if (this.flag == 0) {
+    const salt = await bcrypt.genSalt();
+    this.password = await bcrypt.hash(this.password, salt);
+    this.flag = 1;
+  }
   next();
 });
 

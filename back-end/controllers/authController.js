@@ -39,6 +39,7 @@ singup_post = async (req, res) => {
   const { email, password, name, latitude, longitude, occupation } = req.body;
   const requests = [];
   const friends = [];
+  const flag = 0;
 
   try {
     const user = await User.create({
@@ -50,6 +51,7 @@ singup_post = async (req, res) => {
       occupation,
       requests,
       friends,
+      flag,
     });
     const token = createToken(user._id);
     res.cookie("jwt", token, {

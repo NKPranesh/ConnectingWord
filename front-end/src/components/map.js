@@ -11,8 +11,8 @@ const friendshipData = [
   {
     start: [78.4867, 17.385],
     end: [8.6875, 54.2501],
-    fromName: "Hyderabad",
-    toName: "Denmark",
+    email: "Hyderabad",
+    friendEmail: "Denmark",
     tooltip: "Hyderbad to Denmark",
   },
   {
@@ -104,28 +104,6 @@ const peopleData = [
   },
 ];
 
-const layers = [
-  new LineLayer({
-    id: "friendship",
-    data: friendshipData,
-    opacity: 0.8,
-    getSourcePosition: (d) => d.start,
-    getTargetPosition: (d) => d.end,
-    getColor: [225, 0, 0, 123],
-    getWidth: 5,
-    pickable: true,
-  }),
-  new ScatterplotLayer({
-    id: "person",
-    data: peopleData,
-    radiusScale: 50,
-    getPosition: (d) => d.coordinates,
-    getFillColor: [255, 140, 0],
-    getRadius: 200,
-    pickable: true,
-  }),
-];
-
 let INITIAL_VIEW_STATE = {
   longitude: 78.4867,
   latitude: 17.385,
@@ -138,14 +116,64 @@ let INITIAL_VIEW_STATE = {
 const MAP_STYLE = DarkMap;
 
 class Map extends React.Component {
+  edges = [];
+  nodes = [];
+  userEmail = null;
+
   state = {
     mapStatsDisplay: false,
+    layers: [],
   };
+
+  setEdgesData = async () => {
+    await fetch("/friends-list", {
+      method: "get",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        this.edges = responseJson.friendsList;
+        this.nodes = responseJson.nodes;
+        this.userEmail = responseJson.userEmail;
+        let newState = { ...this.state };
+        newState.layers = [
+          new LineLayer({
+            id: "friendship",
+            data: this.edges,
+            opacity: 0.8,
+            getSourcePosition: (d) => d.start,
+            getTargetPosition: (d) => d.end,
+            getColor: [225, 0, 0, 123],
+            getWidth: 5,
+            pickable: true,
+          }),
+          new ScatterplotLayer({
+            id: "person",
+            data: this.nodes,
+            radiusScale: 50,
+            getPosition: (d) => d.coordinates,
+            getFillColor: [255, 140, 0],
+            getRadius: 200,
+            pickable: true,
+          }),
+        ];
+        this.setState(newState);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  componentWillUpdate() {
+    this.setEdgesData();
+  }
+
   render() {
     return (
       <div className="MapDiv">
         <DeckGL
-          layers={layers}
+          layers={this.state.layers}
           initialViewState={INITIAL_VIEW_STATE}
           controller={true}
           getTooltip={({ object }) => object && `${object.tooltip}`}

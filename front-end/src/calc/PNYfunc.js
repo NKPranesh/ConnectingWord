@@ -1,22 +1,13 @@
-import UserTable from "../data/usersTable.json";
-let nodes = [
-  "pranesh@gmail.com",
-  "vamshi@gmail.com",
-  "mahesh@gmail.com",
-  "virat@gmail.com",
-  "rohit@gmail.com",
-  "tarak@gmail.com",
-  "charan@gmail.com",
-];
 function toRadians(degrees) {
   var pi = Math.PI;
   return degrees * (pi / 180);
 }
-const PNYlist = (latitude, longitude, loginEmail) => {
+const PNYlist = (latitude, longitude, loginEmail, nodes, UserTable) => {
+  console.log(nodes);
   let distance = [];
   nodes.map((node) => {
     UserTable.map((user) => {
-      if (user.email === node && user.email !== loginEmail) {
+      if (user.email === node.email && user.email !== loginEmail) {
         let latitude1 = user.latitude;
         let longitude1 = user.longitude;
         let lon1 = toRadians(longitude);
@@ -38,7 +29,7 @@ const PNYlist = (latitude, longitude, loginEmail) => {
         let r = 6371;
         distance.push({
           name: user.name,
-          email: node,
+          email: node.email,
           distance: c * r,
           latitude: user.latitude,
           longitude: user.longitude,
@@ -52,7 +43,6 @@ const PNYlist = (latitude, longitude, loginEmail) => {
   distance.sort((a, b) => {
     return a.distance - b.distance;
   });
-  //console.log(distance);
   return distance;
 };
 //PNYlist(78.3453,3.4567);

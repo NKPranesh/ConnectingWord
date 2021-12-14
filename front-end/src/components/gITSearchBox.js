@@ -6,9 +6,11 @@ class GITSearchBox extends React.Component {
     searchResults: [],
     searchQuery: "",
   };
+
   updateSearchResults = () => {
     let newState = { ...this.state };
-    newState.searchResults = UsersData.filter((user) => {
+    newState.searchResults = this.props.nodesData.filter((user) => {
+      if (user.email === this.props.userEmail) return false;
       return user.name
         .toLowerCase()
         .includes(this.state.searchQuery.toLowerCase());
@@ -44,8 +46,8 @@ class GITSearchBox extends React.Component {
                   this.props.sendSearchData.GITDataHandle({
                     name: user.name,
                     email: user.email,
-                    latitude: user.latitude,
-                    longitude: user.longitude,
+                    latitude: user.coordinates[1],
+                    longitude: user.coordinates[0],
                     occupation: user.occupation,
                   });
                   let newState = { ...this.state };

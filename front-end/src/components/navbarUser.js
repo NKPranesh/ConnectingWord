@@ -8,7 +8,24 @@ class NavbarUser extends React.Component {
     requestListDisplay: false,
   };
 
-  handleRequestListDisplay = () => {
+  getList = async () => {
+    let data = [];
+    await fetch("/user-request-list", {
+      method: "get",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        data = responseJson;
+      })
+      .catch((error) => {
+        console.log("error");
+      });
+    return data;
+  };
+
+  handleRequestListDisplay = async () => {
     let newState = { ...this.state };
     newState.requestListDisplay = !this.state.requestListDisplay;
     this.setState(newState);
@@ -49,7 +66,10 @@ class NavbarUser extends React.Component {
           >
             Request List
           </button>
-          <RequestListBox isDisplay={this.state.requestListDisplay} />
+          <RequestListBox
+            isDisplay={this.state.requestListDisplay}
+            getList={this.getList}
+          />
           <button
             className="NULogoutButton button"
             onClick={this.logoutButtonHandle}

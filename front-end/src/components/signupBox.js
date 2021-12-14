@@ -32,8 +32,8 @@ const SignupBox = (props) => {
         email: email.value,
         password: password.value,
         name: name.value,
-        latitude: longitude.value,
-        longitude: latitude.value,
+        latitude: latitude.value,
+        longitude: longitude.value,
         occupation: occupation.value,
       }),
     })
