@@ -57,7 +57,9 @@ singup_post = async (req, res) => {
     res.cookie("jwt", token, {
       maxAge: 1 * 24 * 60 * 60 * 1000,
       httpOnly: true,
-      domain: "connecting-world.herokuapp.com",
+      //domain: "connecting-world.herokuapp.com",
+      domain: "localhost",
+      secure: true,
     });
     res.status(201).json({ user: user._id });
   } catch (err) {
@@ -74,7 +76,9 @@ login_post = async (req, res) => {
     res.cookie("jwt", token, {
       maxAge: 1 * 24 * 60 * 60 * 1000,
       httpOnly: true,
-      domain: "connecting-world.herokuapp.com",
+      //domain: "connecting-world.herokuapp.com",
+      domain: "localhost",
+      secure: true,
     });
     res.status(200).json({ user: user._id, token });
   } catch (err) {
@@ -85,7 +89,9 @@ login_post = async (req, res) => {
 logout_get = (req, res) => {
   res.cookie("jwt", "", {
     maxAge: 1,
-    domain: "connecting-world.herokuapp.com",
+    //domain: "connecting-world.herokuapp.com",
+    domain: "localhost",
+    secure: true,
   });
   res.json({ status: "logged out" });
 };
