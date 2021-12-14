@@ -246,22 +246,6 @@ app.post("/add-friend", requireAuth, async (req, res) => {
 
 // list of requests user has recieved
 app.get("/user-request-list", async (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
-
-  // Request methods you wish to allow
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-  );
-
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
-  );
-
-  // Set to true if you need the website to include cookies in the requests sent
-  // to the API (e.g. in case you use sessions)
-  res.setHeader("Access-Control-Allow-Credentials", true);
   let token = req.cookies.jwt;
   let userReqList = [];
   if (token) {

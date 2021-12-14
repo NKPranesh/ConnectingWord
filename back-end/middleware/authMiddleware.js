@@ -9,12 +9,14 @@ const requireAuth = (req, res, next) => {
     jwt.verify(token, "philanterfakadi", (err, decodedToken) => {
       if (err) {
         console.log(err.message);
+        res.redirect("/login");
         next();
       } else {
         next();
       }
     });
   } else {
+    res.redirect("/login");
   }
 };
 
