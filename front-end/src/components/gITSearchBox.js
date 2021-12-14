@@ -1,5 +1,4 @@
 import React from "react";
-import UsersData from "../data/usersTable.json";
 import "../stylesheets/gITSearchBox.css";
 class GITSearchBox extends React.Component {
   state = {

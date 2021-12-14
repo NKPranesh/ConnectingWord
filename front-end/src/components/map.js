@@ -7,24 +7,24 @@ import Menusvg from "../media/menuSvg.svg";
 import MapStats from "./mapStats";
 import "../stylesheets/map.css";
 
-const friendshipData = [
-  {
-    start: [78.4867, 17.385],
-    end: [8.6875, 54.2501],
-    email: "Hyderabad",
-    friendEmail: "Denmark",
-    tooltip: "Hyderbad to Denmark",
-  },
-];
+// const friendshipData = [
+//   {
+//     start: [78.4867, 17.385],
+//     end: [8.6875, 54.2501],
+//     email: "Hyderabad",
+//     friendEmail: "Denmark",
+//     tooltip: "Hyderbad to Denmark",
+//   },
+// ];
 
-const peopleData = [
-  {
-    type: "mid",
-    name: "Pranesh",
-    coordinates: [78.4867, 17.385],
-    tooltip: "Pranesh",
-  },
-];
+// const peopleData = [
+//   {
+//     type: "mid",
+//     name: "Pranesh",
+//     coordinates: [78.4867, 17.385],
+//     tooltip: "Pranesh",
+//   },
+// ];
 
 let INITIAL_VIEW_STATE = {
   longitude: 78.4867,

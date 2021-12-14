@@ -9,6 +9,7 @@ const bcrypt = require("bcrypt");
 const { use } = require("./routes/authRoutes");
 
 const app = express();
+const port = process.env.PORT || 4000;
 app.use(express.json());
 app.use(cookieParser());
 
@@ -41,7 +42,7 @@ mongoose
     useCreateIndex: true,
   })
   .then((result) =>
-    app.listen(4000, () => {
+    app.listen(port, () => {
       console.log("Server running on port 4000");
     })
   )
@@ -292,4 +293,8 @@ app.post("/accept-request", requireAuth, (req, res) => {
       }
     });
   }
+});
+
+app.get("/test-api", (req, res) => {
+  res.status(201).json({ message: "Back-end is working good." });
 });
