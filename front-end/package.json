@@ -7,9 +7,10 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "deck.gl": "^6.0.3",
+    "mapbox-gl": "^1.13.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-map-gl": "^6.1.17",
+    "react-map-gl": "^6.1.18",
     "react-router-dom": "^6.0.2",
     "react-scripts": "^4.0.3",
     "web-vitals": "^1.1.2"
