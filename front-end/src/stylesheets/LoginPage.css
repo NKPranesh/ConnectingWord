@@ -11,3 +11,31 @@
   height: 400px;
   padding-left: 60px;
 }
+
+@media screen and (max-width: 1920px) {
+  .LPBody img {
+    height: 550px;
+    padding-left: 80px;
+  }
+}
+
+@media screen and (max-width: 1680px) {
+  .LPBody img {
+    height: 450px;
+    padding-left: 80px;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .LPBody img {
+    height: 400px;
+    padding-left: 60px;
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  .LPBody img {
+    height: 400px;
+    padding-left: 30px;
+  }
+}

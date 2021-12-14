@@ -62,3 +62,21 @@
   margin-top: 20px;
   cursor: pointer;
 }
+
+@media screen and (max-width: 1920px) {
+  .LoginBoxDiv {
+    margin-right: 100px;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .LoginBoxDiv {
+    margin-right: 30px;
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  .LoginBoxDiv {
+    margin-right: 10px;
+  }
+}

@@ -15,48 +15,6 @@ const friendshipData = [
     friendEmail: "Denmark",
     tooltip: "Hyderbad to Denmark",
   },
-  {
-    start: [77.1025, 28.7041],
-    end: [13.4149, 46.8265],
-    fromName: "Delhi",
-    toName: "Austria",
-    tooltip: "Delhi to Austria",
-  },
-  {
-    start: [78.4867, 17.385],
-    end: [77.1025, 28.7041],
-    fromName: "Hyderabad",
-    toName: "Delhi",
-    tooltip: "Hyderbad to Delhi",
-  },
-  {
-    start: [77.1025, 28.7041],
-    end: [103.8198, 1.3521],
-    fromName: "Delhi",
-    toName: "Singapore",
-    tooltip: "Delhi to Singapore",
-  },
-  {
-    start: [78.4867, 17.385],
-    end: [17.2283, 26.3351],
-    fromName: "Hyderabad",
-    toName: "Libya",
-    tooltip: "Hyderabad to Libya",
-  },
-  {
-    start: [17.2283, 26.3351],
-    end: [3.7492, 40.4637],
-    fromName: "Libya",
-    toName: "Spain",
-    tooltip: "Libya to Spain",
-  },
-  {
-    start: [3.7492, 40.4637],
-    end: [13.4149, 46.8265],
-    fromName: "Spain",
-    toName: "Austria",
-    tooltip: "Spain to Austria",
-  },
 ];
 
 const peopleData = [
@@ -65,42 +23,6 @@ const peopleData = [
     name: "Pranesh",
     coordinates: [78.4867, 17.385],
     tooltip: "Pranesh",
-  },
-  {
-    type: "major",
-    name: "Vamshi",
-    coordinates: [8.6875, 54.2501],
-    tooltip: "Vamshi",
-  },
-  {
-    type: "major",
-    name: "Mahesh",
-    coordinates: [13.4149, 46.8265],
-    tooltip: "Mahesh",
-  },
-  {
-    type: "major",
-    name: "Virat",
-    coordinates: [77.1025, 28.7041],
-    tooltip: "Virat",
-  },
-  {
-    type: "major",
-    name: "Rohit",
-    coordinates: [103.8198, 1.3521],
-    tooltip: "Rohit",
-  },
-  {
-    type: "major",
-    name: "Tarak",
-    coordinates: [17.2283, 26.3351],
-    tooltip: "Tarak",
-  },
-  {
-    type: "major",
-    name: "Charan",
-    coordinates: [3.7492, 40.4637],
-    tooltip: "Charan",
   },
 ];
 
@@ -151,10 +73,11 @@ class Map extends React.Component {
           new ScatterplotLayer({
             id: "person",
             data: this.nodes,
-            radiusScale: 50,
+            radiusScale: 0,
+            radiusMinPixels: 10,
+            radiusMaxPixels: 20,
             getPosition: (d) => d.coordinates,
             getFillColor: [255, 140, 0],
-            getRadius: 200,
             pickable: true,
           }),
         ];

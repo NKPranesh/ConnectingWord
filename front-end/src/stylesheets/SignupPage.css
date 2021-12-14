@@ -11,3 +11,31 @@
   height: 370px;
   padding-left: 60px;
 }
+
+@media screen and (max-width: 1920px) {
+  .SPImg {
+    height: 550px;
+    padding-left: 100px;
+  }
+}
+
+@media screen and (max-width: 1680px) {
+  .SPImg {
+    height: 450px;
+    padding-left: 80px;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .SPImg {
+    height: 400px;
+    padding-left: 60px;
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  .SPImg {
+    height: 370px;
+    padding-left: 40px;
+  }
+}

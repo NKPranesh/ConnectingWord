@@ -3,7 +3,8 @@
   width: 450px;
   box-sizing: border-box;
   background-color: white;
-  min-height: 500px;
+  max-height: 800px;
+  overflow: auto;
 }
 
 .MSGITNoSearch {
@@ -99,4 +100,10 @@
 .MSGITPath {
   font-weight: 600;
   margin: 2px 0px;
+}
+
+@media screen and (max-height: 780px) {
+  .MapStatsMainDiv {
+    max-height: 500px;
+  }
 }

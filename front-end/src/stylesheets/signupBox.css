@@ -93,3 +93,27 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+@media screen and (max-width: 1920px) {
+  .SBsignupBox {
+    margin-right: 100px;
+  }
+}
+
+@media screen and (max-width: 1680px) {
+  .SBsignupBox {
+    margin-right: 100px;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .SBsignupBox {
+    margin-right: 40px;
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  .SBsignupBox {
+    margin-right: 30px;
+  }
+}
