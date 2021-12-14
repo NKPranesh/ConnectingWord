@@ -58,7 +58,6 @@ singup_post = async (req, res) => {
       maxAge: 1 * 24 * 60 * 60 * 1000,
       httpOnly: true,
       domain: "connectingworld-api.herokuapp.com",
-      //domain: "localhost",
       secure: true,
       sameSite: "none",
     });
