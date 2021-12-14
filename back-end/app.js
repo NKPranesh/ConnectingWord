@@ -13,7 +13,6 @@ const port = process.env.PORT || 4000;
 app.use(express.json());
 app.use(cookieParser());
 app.use(function (req, res, next) {
-  // Website you wish to allow to connect
   res.setHeader(
     "Access-Control-Allow-Origin",
     "https://connecting-world.herokuapp.com"
