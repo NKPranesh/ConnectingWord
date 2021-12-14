@@ -245,7 +245,7 @@ app.post("/add-friend", requireAuth, async (req, res) => {
 });
 
 // list of requests user has recieved
-app.get("/user-request-list", requireAuth, async (req, res) => {
+app.get("/user-request-list", async (req, res) => {
   let token = req.cookies.jwt;
   let userReqList = [];
   if (token) {
