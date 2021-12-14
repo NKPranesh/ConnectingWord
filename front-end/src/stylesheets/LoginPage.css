@@ -39,3 +39,8 @@
     padding-left: 30px;
   }
 }
+@media screen and (max-height: 850px) {
+  .LPBody {
+    margin-top: 30px;
+  }
+}

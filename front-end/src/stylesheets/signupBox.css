@@ -99,6 +99,20 @@ input[type="number"] {
     margin-right: 100px;
   }
 }
+@media screen and (max-height: 850px) {
+  .SBHeadDiv {
+    padding: 5px 150px;
+  }
+  .SBBodyDiv {
+    padding: 10px 0px;
+  }
+  .SBsignupBox {
+    margin-top: 15px;
+  }
+  .SBSignupButton {
+    padding: 10px 0px;
+  }
+}
 
 @media screen and (max-width: 1680px) {
   .SBsignupBox {
