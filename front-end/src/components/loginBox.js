@@ -11,7 +11,7 @@ const LoginBox = () => {
     let email = document.getElementsByClassName("LBEmailInput")[0];
     let password = document.getElementsByClassName("LBPasswordInput")[0];
 
-    await fetch("/login", {
+    await fetch("https://connectingworld-api.herokuapp.com/login", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

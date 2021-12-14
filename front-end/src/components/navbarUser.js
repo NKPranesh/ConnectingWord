@@ -11,7 +11,7 @@ class NavbarUser extends React.Component {
 
   getList = async () => {
     let data = [];
-    await fetch("/user-request-list", {
+    await fetch("https://connectingworld-api.herokuapp.com/user-request-list", {
       method: "get",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
@@ -33,7 +33,7 @@ class NavbarUser extends React.Component {
   };
 
   logoutButtonHandle = async () => {
-    await fetch("/logout", {
+    await fetch("https://connectingworld-api.herokuapp.com/logout", {
       method: "get",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

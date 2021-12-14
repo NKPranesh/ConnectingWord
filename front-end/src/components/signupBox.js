@@ -24,7 +24,7 @@ const SignupBox = (props) => {
       return;
     }
 
-    await fetch("/signup", {
+    await fetch("https://connectingworld-api.herokuapp.com/signup", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

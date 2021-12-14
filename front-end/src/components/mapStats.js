@@ -39,7 +39,7 @@ class MapStats extends React.Component {
   userTable = [];
   nodes = [];
   getEmailNNodesNUserTable = async () => {
-    await fetch("/friends-list", {
+    await fetch("https://connectingworld-api.herokuapp.com/friends-list", {
       method: "get",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
@@ -48,7 +48,7 @@ class MapStats extends React.Component {
       .then(async (responseJson) => {
         this.nodes = responseJson.nodes;
         this.userEmail = responseJson.userEmail;
-        await fetch("/usertable", {
+        await fetch("https://connectingworld-api.herokuapp.com/usertable", {
           method: "get",
           headers: { "Content-Type": "application/json" },
           credentials: "include",

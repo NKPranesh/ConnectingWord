@@ -7,7 +7,7 @@ class RequestListBox extends React.Component {
   };
 
   handleAccept = async (reqEmail) => {
-    await fetch("/accept-request", {
+    await fetch("https://connectingworld-api.herokuapp.com/accept-request", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
@@ -26,7 +26,7 @@ class RequestListBox extends React.Component {
   };
 
   handleReject = async (reqEmail) => {
-    await fetch("/reject-request", {
+    await fetch("https://connectingworld-api.herokuapp.com/reject-request", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

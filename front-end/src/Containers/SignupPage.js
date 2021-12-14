@@ -18,7 +18,7 @@ const SignupPage = () => {
   const authenticate = async () => {
     let isAuthenticated = false;
 
-    await fetch("/authenticate", {
+    await fetch("https://connectingworld-api.herokuapp.com/authenticate", {
       method: "get",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
