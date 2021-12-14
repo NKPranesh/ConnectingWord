@@ -1,0 +1,68 @@
+.HPPart1,
+.HPPart2,
+.HPPart3 {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 45px;
+  height: calc(100vh - 140px);
+}
+.HPImg1 img {
+  width: 400px;
+  padding-right: 120px;
+}
+.HPImg3 img {
+  width: 400px;
+  padding-right: 120px;
+}
+.HPImg2 img {
+  width: 400px;
+  padding-left: 120px;
+}
+.HPHeading {
+  font-size: 33px;
+  font-weight: 800;
+  height: 60px;
+}
+.Hptext {
+  font-size: 20px;
+  padding-right: 200px;
+  font-weight: 400;
+}
+.HPHeading3 {
+  font-size: 22px;
+  font-weight: 800;
+  height: 70px;
+  padding-right: 100px;
+}
+.Hptext3 {
+  font-size: 20px;
+  padding-right: 150px;
+  font-weight: 400;
+}
+.HPHeading2 {
+  font-size: 22px;
+  font-weight: 800;
+  height: 80px;
+}
+.Hptext2 {
+  font-size: 20px;
+  padding-right: 0px;
+  font-weight: 400;
+}
+.HPBody1 {
+  padding-left: 150px;
+}
+.HPBody2 {
+  padding-right: 120px;
+  padding-left: 190px;
+}
+.HPBody1 button {
+  padding: 7px 15px;
+  background-color: #382d88;
+  color: white;
+  border: none;
+  margin-top: 6px;
+}
