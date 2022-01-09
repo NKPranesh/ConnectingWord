@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Loading from "./loading";
 import "../stylesheets/loginBox.css";
 
 const LoginBox = () => {
   const [error, setError] = useState("");
   const [errorDisplay, setErrorDisplay] = useState("none");
+  const [loadingDisplay, setLoadingDisplay] = useState(false);
   const navigate = useNavigate();
 
   let submitButtonHandle = async () => {
     let email = document.getElementsByClassName("LBEmailInput")[0];
     let password = document.getElementsByClassName("LBPasswordInput")[0];
+
+    setLoadingDisplay(true);
 
     await fetch("https://connectingworld-api.herokuapp.com/login", {
       method: "post",
@@ -29,6 +33,7 @@ const LoginBox = () => {
         if ("user" in responseJson) {
           setErrorDisplay("none");
           setError("");
+          setLoadingDisplay(false);
           navigate("/userpage");
         }
       })
@@ -58,6 +63,7 @@ const LoginBox = () => {
           </button>
         </div>
       </div>
+      {loadingDisplay && <Loading />}
     </div>
   );
 };
