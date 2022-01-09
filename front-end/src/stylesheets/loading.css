@@ -1,4 +1,4 @@
-.LoadingDiv {
+.LoadingMainDiv {
   position: absolute;
   height: 100vh;
   width: 100vw;
@@ -8,13 +8,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  backdrop-filter: blur(1.5px);
 }
 
 .LoadingDiv {
   border: 5px solid #f3f3f3; /* Light grey */
-  border-top: 5px solid #0058ff; /* Blue */
-  border-radius: 50%;
+  border-top: 5px solid rgba(103, 83, 253, 1); /* Blue */
+  border-radius: 60%;
   width: 50px;
   height: 50px;
   animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
