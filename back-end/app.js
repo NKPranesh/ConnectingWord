@@ -17,6 +17,7 @@ app.use(function (req, res, next) {
     "Access-Control-Allow-Origin",
     "https://connecting-world.herokuapp.com"
   );
+  //test
   // res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
 
   // Request methods you wish to allow
