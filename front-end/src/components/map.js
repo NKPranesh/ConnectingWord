@@ -5,6 +5,7 @@ import { LineLayer, ScatterplotLayer } from "@deck.gl/layers";
 import DarkMap from "../data/map.json";
 import Menusvg from "../media/menuSvg.svg";
 import MapStats from "./mapStats";
+import Loading from "./loading";
 import "../stylesheets/map.css";
 
 // const friendshipData = [
@@ -46,9 +47,14 @@ class Map extends React.Component {
   state = {
     mapStatsDisplay: false,
     layers: [],
+    loadingDisplay: false,
   };
 
   setEdgesData = async () => {
+    let newState = { ...this.state };
+    newState.loadingDisplay = true;
+    this.setState(newState);
+
     await fetch("https://connectingworld-api.herokuapp.com/friends-list", {
       method: "get",
       headers: { "Content-Type": "application/json" },
@@ -82,6 +88,7 @@ class Map extends React.Component {
             pickable: true,
           }),
         ];
+        newState.loadingDisplay = false;
         this.setState(newState);
       })
       .catch((error) => {
@@ -96,36 +103,42 @@ class Map extends React.Component {
   render() {
     return (
       <div className="MapDiv">
-        <DeckGL
-          layers={this.state.layers}
-          initialViewState={INITIAL_VIEW_STATE}
-          controller={true}
-          getTooltip={({ object }) => object && `${object.tooltip}`}
-        >
-          <StaticMap
-            reuseMaps
-            className="StaticMap"
-            mapStyle={MAP_STYLE}
-            preventStyleDiffing={true}
-            mapboxApiAccessToken="pk.eyJ1IjoiY29ubmVjdGluZ3dvcmxkIiwiYSI6ImNrd2l3anlzdDB3bTAycG1kYXVlYnZtaXAifQ.fsAb70tSq-vGoIwjXuqreg"
-          />
-        </DeckGL>
-        <div className="Menudiv">
-          <img
-            src={Menusvg}
-            alt="menusvg"
-            onClick={() => {
-              let newState = { ...this.state };
-              newState.mapStatsDisplay = !newState.mapStatsDisplay;
-              this.setState(newState);
-            }}
-          />
-          {this.state.mapStatsDisplay && (
-            <div className="MapStatsDiv">
-              <MapStats />
+        {this.state.loadingDisplay ? (
+          <Loading />
+        ) : (
+          <React.Fragment>
+            <DeckGL
+              layers={this.state.layers}
+              initialViewState={INITIAL_VIEW_STATE}
+              controller={true}
+              getTooltip={({ object }) => object && `${object.tooltip}`}
+            >
+              <StaticMap
+                reuseMaps
+                className="StaticMap"
+                mapStyle={MAP_STYLE}
+                preventStyleDiffing={true}
+                mapboxApiAccessToken="pk.eyJ1IjoiY29ubmVjdGluZ3dvcmxkIiwiYSI6ImNrd2l3anlzdDB3bTAycG1kYXVlYnZtaXAifQ.fsAb70tSq-vGoIwjXuqreg"
+              />
+            </DeckGL>
+            <div className="Menudiv">
+              <img
+                src={Menusvg}
+                alt="menusvg"
+                onClick={() => {
+                  let newState = { ...this.state };
+                  newState.mapStatsDisplay = !newState.mapStatsDisplay;
+                  this.setState(newState);
+                }}
+              />
+              {this.state.mapStatsDisplay && (
+                <div className="MapStatsDiv">
+                  <MapStats />
+                </div>
+              )}
             </div>
-          )}
-        </div>
+          </React.Fragment>
+        )}
       </div>
     );
   }
