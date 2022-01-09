@@ -6,6 +6,12 @@ class SearchBox extends React.Component {
   state = {
     searchResults: [],
     searchQuery: "",
+    setDataFlag: false,
+    UsersTable: null,
+    FriendsTable: null,
+    RequestListTable: null,
+    userEmail: null,
+    loadingDisplay: true,
   };
 
   // friendship Status
@@ -24,24 +30,83 @@ class SearchBox extends React.Component {
     })
       .then((response) => response.json())
       .then((responseJson) => {
-        this.updateSearchResults();
+        this.updateSearchResults(reqEmail);
       })
       .catch((error) => {
         console.log("error");
       });
   };
 
-  updateSearchResults = () => {
-    let UsersTable = [];
-    let FriendsTable = [];
-    let RequestListTable = [];
-    let userEmail = null;
-    setData().then((data) => {
-      UsersTable = data.usersList;
-      FriendsTable = data.friendsList;
-      RequestListTable = data.requestList;
-      userEmail = data.userEmail;
+  updateSearchResults = (reqEmail) => {
+    let UsersTable = this.state.UsersTable;
+    let FriendsTable = this.state.FriendsTable;
+    let RequestListTable = this.state.RequestListTable;
+    let userEmail = this.state.userEmail;
+    if (this.state.setDataFlag === false) {
+      setData().then((data) => {
+        let newState = { ...this.state };
 
+        UsersTable = data.usersList;
+        FriendsTable = data.friendsList;
+        RequestListTable = data.requestList;
+        userEmail = data.userEmail;
+
+        newState.UsersTable = data.usersList;
+        newState.FriendsTable = data.friendsList;
+        newState.RequestListTable = data.requestList;
+        newState.userEmail = data.userEmail;
+
+        newState.setDataFlag = true;
+        newState.loadingDisplay = false;
+
+        this.setState(newState);
+
+        let newUsersTable = UsersTable.filter((user) => {
+          if (user.email === userEmail) return false;
+          return user.name
+            .toLowerCase()
+            .includes(this.state.searchQuery.toLowerCase());
+        });
+        newUsersTable = newUsersTable.map((user) => {
+          let newUser = { ...user };
+          newUser.friendshipStatus = -1;
+          if (newUser.email === reqEmail) newUser.friendshipStatus = 0;
+          for (let u of RequestListTable) {
+            if (u.fromEmail === userEmail && u.toEmail === user.email) {
+              newUser.friendshipStatus = 0;
+              break;
+            }
+          }
+
+          for (let u of FriendsTable) {
+            if (u.email === userEmail && u.friendEmail === user.email) {
+              newUser.friendshipStatus = 1;
+              break;
+            }
+          }
+
+          return newUser;
+        });
+
+        newState = { ...this.state };
+        if (this.state.searchQuery === "") newState.searchResults = [];
+        else newState.searchResults = newUsersTable;
+        if (
+          newState.searchResults.length === 0 &&
+          !(this.state.searchQuery === "")
+        )
+          newState.searchResults = [
+            {
+              email: null,
+              name: "No Result found",
+              latitude: null,
+              longitude: null,
+              occupation: null,
+            },
+          ];
+        this.setState(newState);
+      });
+    } else {
       let newUsersTable = UsersTable.filter((user) => {
         if (user.email === userEmail) return false;
         return user.name
@@ -51,6 +116,7 @@ class SearchBox extends React.Component {
       newUsersTable = newUsersTable.map((user) => {
         let newUser = { ...user };
         newUser.friendshipStatus = -1;
+        if (newUser.email === reqEmail) newUser.friendshipStatus = 0;
         for (let u of RequestListTable) {
           if (u.fromEmail === userEmail && u.toEmail === user.email) {
             newUser.friendshipStatus = 0;
@@ -85,7 +151,7 @@ class SearchBox extends React.Component {
           },
         ];
       this.setState(newState);
-    });
+    }
   };
 
   render() {
@@ -100,47 +166,54 @@ class SearchBox extends React.Component {
             newState.searchQuery = e.target.value.trim();
             this.setState(newState);
             setTimeout(() => {
-              this.updateSearchResults();
+              this.updateSearchResults("");
             }, 1);
           }}
         />
         <div className="SEResultsDiv">
-          {this.state.searchResults.map((user) => {
-            let index = this.state.searchResults.indexOf(user);
-            return (
-              <div key={index} className="SESearchResult">
-                <p>
-                  {user.name}
-                  <br />
-                  <p
-                    style={{
-                      fontSize: "12px",
-                    }}
-                  >
-                    Email: {user.email}
+          {this.state.loadingDisplay === true &&
+          !(this.state.searchQuery === "") ? (
+            <div className="SESearchResult SELoadingMainDiv">
+              <div className="Loading"></div>
+            </div>
+          ) : (
+            this.state.searchResults.map((user) => {
+              let index = this.state.searchResults.indexOf(user);
+              return (
+                <div key={index} className="SESearchResult">
+                  <p>
+                    {user.name}
+                    <br />
+                    <p
+                      style={{
+                        fontSize: "12px",
+                      }}
+                    >
+                      Email: {user.email}
+                    </p>
                   </p>
-                </p>
-                {user.email && user.friendshipStatus === -1 && (
-                  <button
-                    className="SEAddFriendButton"
-                    onClick={() => {
-                      this.addFriendHandle(user.email);
-                    }}
-                  >
-                    Add Friend
-                  </button>
-                )}
-                {user.email && user.friendshipStatus === 0 && (
-                  <button className="SEFriendRequestSent">
-                    Friend Request Sent
-                  </button>
-                )}
-                {user.email && user.friendshipStatus === 1 && (
-                  <button className="SEFriends">Friends</button>
-                )}
-              </div>
-            );
-          })}
+                  {user.email && user.friendshipStatus === -1 && (
+                    <button
+                      className="SEAddFriendButton"
+                      onClick={() => {
+                        this.addFriendHandle(user.email);
+                      }}
+                    >
+                      Add Friend
+                    </button>
+                  )}
+                  {user.email && user.friendshipStatus === 0 && (
+                    <button className="SEFriendRequestSent">
+                      Friend Request Sent
+                    </button>
+                  )}
+                  {user.email && user.friendshipStatus === 1 && (
+                    <button className="SEFriends">Friends</button>
+                  )}
+                </div>
+              );
+            })
+          )}
         </div>
       </div>
     );

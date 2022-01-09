@@ -1,9 +1,13 @@
 import React from "react";
 import "../stylesheets/requestListBox.css";
+import Loading from "./loading";
 class RequestListBox extends React.Component {
   state = {
     RequestListTable: [],
     display: true,
+    loadingDisplay: true,
+    acceptLoading: false,
+    rejectLoading: false,
   };
 
   handleAccept = async (reqEmail) => {
@@ -48,6 +52,9 @@ class RequestListBox extends React.Component {
       let newState = { ...this.state };
       newState.RequestListTable = responseJson;
       newState.display = responseJson.length === 0 ? false : true;
+      newState.loadingDisplay = false;
+      newState.rejectLoading = false;
+      newState.acceptLoading = false;
       this.setState(newState);
     });
   };
@@ -64,7 +71,11 @@ class RequestListBox extends React.Component {
             : "RequestListBoxMainDiv Close"
         }
       >
-        {this.state.display ? (
+        {this.state.loadingDisplay === true ? (
+          <div className="RLLoadingDiv">
+            <div className="Loading"></div>
+          </div>
+        ) : this.state.display === true ? (
           this.state.RequestListTable.map((request) => {
             let index = this.state.RequestListTable.indexOf(request);
             return (
@@ -77,6 +88,9 @@ class RequestListBox extends React.Component {
                   <button
                     className="RLRejectButton"
                     onClick={() => {
+                      let newState = { ...this.state };
+                      newState.rejectLoading = true;
+                      this.setState(newState);
                       this.handleReject(request.email);
                     }}
                   >
@@ -85,6 +99,9 @@ class RequestListBox extends React.Component {
                   <button
                     className="RLAcceptButton"
                     onClick={() => {
+                      let newState = { ...this.state };
+                      newState.acceptLoading = true;
+                      this.setState(newState);
                       this.handleAccept(request.email);
                     }}
                   >
@@ -102,6 +119,12 @@ class RequestListBox extends React.Component {
                 &nbsp;&nbsp;&nbsp;&nbsp; You have no Friend Requests.
               </p>
             </div>
+          </div>
+        )}
+        {(this.state.acceptLoading === true ||
+          this.state.rejectLoading === true) && (
+          <div className="RLLoadingDiv">
+            <div className="Loading"></div>
           </div>
         )}
       </div>

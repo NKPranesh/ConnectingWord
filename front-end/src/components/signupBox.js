@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import "../stylesheets/signupBox.css";
 import { useNavigate } from "react-router-dom";
 import LocationSvg from "../media/LocationSvg.svg";
+import Loading from "./loading";
 
 const SignupBox = (props) => {
   const [error, setError] = useState("");
   const [errorDisplay, setErrorDisplay] = useState("none");
+  const [loadingDisplay, setLoadingDisplay] = useState(false);
   const navigate = useNavigate();
 
   let submitButtonHandle = async () => {
@@ -23,6 +25,8 @@ const SignupBox = (props) => {
       setError("Password do not match");
       return;
     }
+
+    setLoadingDisplay(true);
 
     await fetch("https://connectingworld-api.herokuapp.com/signup", {
       method: "post",
@@ -42,6 +46,7 @@ const SignupBox = (props) => {
         if ("user" in responseJson) {
           setErrorDisplay("none");
           setError("");
+          setLoadingDisplay(false);
           navigate("/userpage");
         } else {
           let errorsArr = Object.values(responseJson.errors);
@@ -52,6 +57,7 @@ const SignupBox = (props) => {
               break;
             }
           }
+          setLoadingDisplay(false);
         }
       })
       .catch((error) => {
@@ -132,6 +138,7 @@ const SignupBox = (props) => {
           </button>
         </div>
       </div>
+      {loadingDisplay === true && <Loading />}
     </div>
   );
 };

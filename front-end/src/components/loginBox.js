@@ -28,6 +28,7 @@ const LoginBox = () => {
       .then((responseJson) => {
         if ("error" in responseJson) {
           setErrorDisplay("block");
+          setLoadingDisplay(false);
           setError(responseJson.error);
         }
         if ("user" in responseJson) {

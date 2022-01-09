@@ -33,6 +33,8 @@ class MapStats extends React.Component {
       ["MSD", "Vamshi", "Virat", "Rohit", "Mahesh"],
     ],
     distance: null,
+    LocationFlag: false,
+    EmailNodesUserTableFlag: false,
   };
 
   userEmail = null;
@@ -56,6 +58,9 @@ class MapStats extends React.Component {
           .then((response) => response.json())
           .then((responseJson) => {
             this.userTable = responseJson;
+            let newState = { ...this.state };
+            newState.EmailNodesUserTableFlag = true;
+            this.setState(newState);
           })
           .catch((error) => {
             console.log(error);
@@ -114,6 +119,7 @@ class MapStats extends React.Component {
     let newState = { ...this.state };
     newState.latitude = latitude;
     newState.longitude = longitude;
+    newState.LocationFlag = true;
     this.setState(newState);
   };
 
@@ -143,32 +149,39 @@ class MapStats extends React.Component {
         <div className="MSPNYResultDiv">
           <p className="MSPNYResultLabel">People</p>
           <div className="MSPNYListDiv">
-            {PNYlist(
-              this.state.latitude,
-              this.state.longitude,
-              this.userEmail,
-              this.nodes,
-              this.userTable
-            ).map((user) => {
-              let index = user.email;
-              return (
-                <div key={index} className="MSPNYListItemDiv">
-                  <p className="MSPNYName">{user.name}</p>
-                  <p className="MSPNYEmail">Email: {user.email}</p>
-                  <p className="MSPNYLatitudeLongitude">
-                    Latitude: {parseFloat(user.latitude).toFixed(4)}{" "}
-                    &emsp;&emsp; Longitude:{" "}
-                    {parseFloat(user.longitude).toFixed(4)}
-                  </p>
-                  <p className="MSPNYDistance">
-                    Occupation: {user.occupation}{" "}
-                  </p>
-                  <p className="MSPNYDistance">
-                    Distance: {parseFloat(user.distance.toFixed(2))} Km
-                  </p>
-                </div>
-              );
-            })}
+            {this.state.LocationFlag === false ||
+            this.state.EmailNodesUserTableFlag === false ? (
+              <div className="PNYLoadingDiv">
+                <div className="Loading"></div>
+              </div>
+            ) : (
+              PNYlist(
+                this.state.latitude,
+                this.state.longitude,
+                this.userEmail,
+                this.nodes,
+                this.userTable
+              ).map((user) => {
+                let index = user.email;
+                return (
+                  <div key={index} className="MSPNYListItemDiv">
+                    <p className="MSPNYName">{user.name}</p>
+                    <p className="MSPNYEmail">Email: {user.email}</p>
+                    <p className="MSPNYLatitudeLongitude">
+                      Latitude: {parseFloat(user.latitude).toFixed(4)}{" "}
+                      &emsp;&emsp; Longitude:{" "}
+                      {parseFloat(user.longitude).toFixed(4)}
+                    </p>
+                    <p className="MSPNYDistance">
+                      Occupation: {user.occupation}{" "}
+                    </p>
+                    <p className="MSPNYDistance">
+                      Distance: {parseFloat(user.distance.toFixed(2))} Km
+                    </p>
+                  </div>
+                );
+              })
+            )}
           </div>
         </div>
       </div>
@@ -179,60 +192,71 @@ class MapStats extends React.Component {
     // let pathcount=0;
     return (
       <div className="MSGITDiv">
-        <GITSearchBox
-          sendSearchData={{ GITDataHandle: this.gITSearchedDataHandle }}
-          nodesData={this.nodes}
-          userEmail={this.userEmail}
-        />
-        {this.state.GITSearchedData === null ? (
-          <div className="MSGITNoSearch">
-            <p>Search for the person to get in touch.</p>
+        {this.state.LocationFlag === false ||
+        this.state.EmailNodesUserTableFlag === false ? (
+          <div className="PNYLoadingDiv">
+            <div className="Loading"></div>
           </div>
         ) : (
           <React.Fragment>
-            <div className="MSGITSearchInfoDiv">
-              <p className="MSGITName">{this.state.GITSearchedData.name}</p>
-              <p className="MSGITEmail">
-                Email: {this.state.GITSearchedData.email}
-              </p>
-              <p className="MSGITLatitudeLongitude">
-                Latitude:{" "}
-                {parseFloat(this.state.GITSearchedData.latitude).toFixed(4)}{" "}
-                &emsp;&emsp; Longitude:{" "}
-                {parseFloat(this.state.GITSearchedData.longitude).toFixed(4)}
-              </p>
-              <p className="MSGITDistance">
-                Occupation: {this.state.GITSearchedData.occupation}
-              </p>
-              <p className="MSGITDistance">
-                Distance: {parseFloat(this.state.distance.toFixed(2))} Km
-              </p>
-            </div>
-            <div className="MSGITPathsDiv">
-              <p className="MSGITPathsLabel">Possible Paths</p>
-              <div className="MSGITPathListDiv">
-                {this.state.GITPathsData.map((path) => {
-                  console.log(this.state.GITPathsData);
-                  let index = this.state.GITPathsData.indexOf(path);
-                  return (
-                    <div className="MSGITPathDiv" key={index}>
-                      <p className="MSGITPathNo">Path: {index}</p>
-                      <p className="MSGITPath">
-                        {path.map((node) => {
-                          let i = path.indexOf(node) + 1;
-                          let returnValue =
-                            i === path.length ? node : node + " --> ";
-                          return <span key={i}>{returnValue}</span>;
-                        })}
-                      </p>
-                      <p className="MSGITPathLength">
-                        Path Length: {path.length - 1}
-                      </p>
-                    </div>
-                  );
-                })}
+            <GITSearchBox
+              sendSearchData={{ GITDataHandle: this.gITSearchedDataHandle }}
+              nodesData={this.nodes}
+              userEmail={this.userEmail}
+            />
+            {this.state.GITSearchedData === null ? (
+              <div className="MSGITNoSearch">
+                <p>Search for the person to get in touch.</p>
               </div>
-            </div>
+            ) : (
+              <React.Fragment>
+                <div className="MSGITSearchInfoDiv">
+                  <p className="MSGITName">{this.state.GITSearchedData.name}</p>
+                  <p className="MSGITEmail">
+                    Email: {this.state.GITSearchedData.email}
+                  </p>
+                  <p className="MSGITLatitudeLongitude">
+                    Latitude:{" "}
+                    {parseFloat(this.state.GITSearchedData.latitude).toFixed(4)}{" "}
+                    &emsp;&emsp; Longitude:{" "}
+                    {parseFloat(this.state.GITSearchedData.longitude).toFixed(
+                      4
+                    )}
+                  </p>
+                  <p className="MSGITDistance">
+                    Occupation: {this.state.GITSearchedData.occupation}
+                  </p>
+                  <p className="MSGITDistance">
+                    Distance: {parseFloat(this.state.distance.toFixed(2))} Km
+                  </p>
+                </div>
+                <div className="MSGITPathsDiv">
+                  <p className="MSGITPathsLabel">Possible Paths</p>
+                  <div className="MSGITPathListDiv">
+                    {this.state.GITPathsData.map((path) => {
+                      console.log(this.state.GITPathsData);
+                      let index = this.state.GITPathsData.indexOf(path);
+                      return (
+                        <div className="MSGITPathDiv" key={index}>
+                          <p className="MSGITPathNo">Path: {index}</p>
+                          <p className="MSGITPath">
+                            {path.map((node) => {
+                              let i = path.indexOf(node) + 1;
+                              let returnValue =
+                                i === path.length ? node : node + " --> ";
+                              return <span key={i}>{returnValue}</span>;
+                            })}
+                          </p>
+                          <p className="MSGITPathLength">
+                            Path Length: {path.length - 1}
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </React.Fragment>
+            )}
           </React.Fragment>
         )}
       </div>

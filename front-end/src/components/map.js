@@ -47,14 +47,10 @@ class Map extends React.Component {
   state = {
     mapStatsDisplay: false,
     layers: [],
-    loadingDisplay: false,
+    loadingDisplay: true,
   };
 
   setEdgesData = async () => {
-    let newState = { ...this.state };
-    newState.loadingDisplay = true;
-    this.setState(newState);
-
     await fetch("https://connectingworld-api.herokuapp.com/friends-list", {
       method: "get",
       headers: { "Content-Type": "application/json" },

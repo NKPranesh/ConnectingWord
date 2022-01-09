@@ -11,6 +11,13 @@
   overflow: auto;
 }
 
+.RLLoadingDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+}
+
 .Open {
   display: flex;
   flex-direction: column;
