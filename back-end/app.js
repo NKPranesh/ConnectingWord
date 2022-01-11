@@ -15,7 +15,7 @@ app.use(cookieParser());
 app.use(function (req, res, next) {
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "https://connecting-world.herokuapp.com"
+    "https://connectingworldapp.web.app"
   );
   //test
   // res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
