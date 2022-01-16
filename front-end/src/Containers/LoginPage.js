@@ -36,7 +36,7 @@ const LoginPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="LPMainDiv">
       <Navbar parent={{ login: true, signup: false }} />
       <div className="LPBody">
         <img src={LoginPageImg} alt="img" />

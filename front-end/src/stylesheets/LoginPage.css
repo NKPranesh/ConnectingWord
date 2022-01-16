@@ -1,10 +1,14 @@
+.LPMainDiv {
+  max-height: 100vh;
+}
+
 .LPBody {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: 0px 90px;
-  height: calc(100vh - 140px);
+  height: calc(100vh - 57px);
 }
 
 .LPBody img {
@@ -39,8 +43,40 @@
     padding-left: 30px;
   }
 }
-@media screen and (max-height: 850px) {
+/* @media screen and (max-height: 850px) {
   .LPBody {
-    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+} */
+
+@media screen and (max-width: 1080px) {
+  .LPBody img {
+    display: none;
+  }
+  .LPBody {
+    height: calc(100vh - 57px - 20px);
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .LPBody {
+    margin-top: 57px;
+    height: calc(100vh - 57px - 50px);
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .LPBody {
+    margin-top: 57px;
+    height: calc(100vh - 57px - 70px);
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .LPBody {
+    margin-top: 57px;
+    height: calc(100vh - 57px - 90px);
   }
 }

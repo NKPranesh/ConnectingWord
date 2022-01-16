@@ -27,8 +27,8 @@
   padding-left: 120px;
 }
 .HPHeading {
-  font-size: 33px;
-  font-weight: 800;
+  font-size: 36px;
+  font-weight: 700;
 }
 .Hptext {
   font-size: 20px;
@@ -39,7 +39,7 @@
 .HPHeading3 {
   font-size: 22px;
   font-weight: 800;
-  padding-right: 100px;
+  padding-right: 80px;
 }
 .Hptext3 {
   font-size: 20px;
@@ -74,4 +74,150 @@
   font-weight: 500;
   box-shadow: 0px 0px 2px black;
   cursor: pointer;
+}
+
+@media screen and (max-width: 1080px) {
+  .HPParent {
+    margin-left: 45px;
+  }
+  .HPPart1 {
+    padding: 0;
+  }
+
+  .HPPart2 {
+    padding: 0;
+  }
+
+  .HPPart3 {
+    padding: 0;
+  }
+
+  .HPBody1 {
+    padding: 0;
+  }
+
+  .HPBody2 {
+    padding: 0;
+  }
+
+  .HPBody3 {
+    padding: 0;
+  }
+
+  .HPPart2 {
+    flex-direction: column-reverse;
+  }
+
+  .HPPart3 {
+    flex-direction: column;
+  }
+
+  .HPImg1 img {
+    height: 220px;
+    padding: 0;
+  }
+
+  .HPImg2 img {
+    height: 250px;
+    padding: 0;
+    padding-top: 20px;
+  }
+
+  .HPImg3 img {
+    height: 250px;
+    padding: 0;
+    padding-top: 20px;
+  }
+
+  .Hptext {
+    padding: 0;
+  }
+
+  .Hptext3 {
+    padding-right: 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .HPHeading {
+    font-size: 33px;
+    font-weight: 700;
+  }
+
+  .HPParent {
+    margin-top: 100px;
+  }
+
+  .HPImg1 img {
+    height: 200px;
+  }
+
+  .HPImg2 img {
+    height: 200px;
+  }
+
+  .HPImg3 img {
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .HPHeading {
+    font-size: 33px;
+    font-weight: 800;
+  }
+
+  .Hptext,
+  .Hptext2,
+  .Hptext3 {
+    font-size: 18px;
+  }
+
+  .HPHeading2,
+  .HPHeading3 {
+    font-size: 20px;
+  }
+
+  .HPImg1 {
+    display: none;
+  }
+
+  .HPParent {
+    margin-left: 30px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .HPHeading {
+    font-size: 25px;
+    font-weight: 700;
+  }
+
+  .Hptext,
+  .Hptext2,
+  .Hptext3 {
+    font-size: 14px;
+  }
+
+  .HPHeading2,
+  .HPHeading3 {
+    font-size: 16px;
+  }
+
+  .HPButton {
+    font-size: 12px;
+  }
+
+  .HPImg1 {
+    display: none;
+  }
+  .HPImg2 img,
+  .HPImg3 img {
+    width: fit-content;
+    height: 160px;
+  }
+
+  .HPParent {
+    margin-left: 25px;
+  }
 }

@@ -2,9 +2,96 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0px 20px;
+  padding: 2px 20px;
   height: 50px;
   margin-top: 8px;
+  z-index: 9999;
+  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 25px 50px -10px,
+    rgba(0, 0, 0, 0.3) 0px 15px 30px -15px; */
+}
+
+.LogoLink {
+  padding: 0;
+}
+
+.MenuItemsDivClose {
+  transform: translateY(-200px);
+}
+
+.MenuItemsDivOpen {
+  transform: translateY(0px);
+}
+
+.MenuItemsDiv {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.98);
+  animation: movedown 0.7s 1;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 4px 6px -5px,
+    rgba(0, 0, 0, 0.3) 0px 4px 3px -5px;
+}
+
+.MenuItemsDivClose {
+  animation: moveup 1s 1;
+}
+
+@keyframes movedown {
+  from {
+    transform: translateY(-200px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes moveup {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-200px);
+  }
+}
+
+.MenuItemsInitial {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  padding: 20px 0px;
+  font-weight: 450;
+}
+
+.Item {
+  width: 100%;
+  text-align: center;
+  border-top: 0.1px solid #c0bfbf;
+}
+.MenuOpen img {
+  background-color: rgba(204, 206, 211, 0.4);
+  border-radius: 50%;
+  padding: 1px;
+}
+
+.itemActive {
+  background-color: rgba(103, 83, 253, 1);
+}
+
+.itemActive a {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.signupItem {
+  border-bottom: 0.1px solid #c0bfbf;
 }
 
 .LogoDiv img {
@@ -31,4 +118,58 @@
 
 .active {
   background-color: #382d88;
+}
+
+.MenuDiv {
+  display: none;
+}
+
+.Menu img {
+  height: 30px;
+}
+
+@media screen and (max-width: 768px) {
+  .NavbarDiv {
+    position: fixed;
+    left: 0%;
+    top: 0px;
+    right: 0%;
+    bottom: auto;
+    z-index: 9999;
+    background-color: rgba(255, 255, 255, 0.95);
+    margin: 0;
+    padding-top: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 4px 6px -5px,
+      rgba(0, 0, 0, 0.3) 0px 4px 3px -5px;
+  }
+
+  .MenuItemsDiv {
+    z-index: 9998;
+  }
+
+  .MenuDiv {
+    display: block;
+  }
+
+  .Menu img {
+    height: 40px;
+  }
+
+  .ButtonsDiv {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .LogoLink img {
+    height: 35px;
+  }
+
+  .Menu img {
+    height: 29px;
+  }
+
+  a {
+    font-size: 14px;
+  }
 }

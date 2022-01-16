@@ -131,3 +131,75 @@ input[type="number"] {
     margin-right: 30px;
   }
 }
+
+@media screen and (max-width: 1080px) {
+  .SBsignupBox {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .SBHeadDiv {
+    padding: 10px 100px;
+    font-size: 34px;
+    text-align: center;
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .SBHeadDiv {
+    padding: 10px 70px;
+    font-size: 28px;
+    text-align: center;
+    width: 200px;
+  }
+
+  .SBInputpassword {
+    width: 110px;
+    padding: 6px 4px;
+    margin: 8px 0px;
+  }
+
+  .SBInput {
+    padding: 6px 4px;
+    width: 250px;
+    margin: 8px 0px;
+  }
+
+  .SBSignupButton {
+    margin-top: 18px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .SBHeadDiv {
+    padding: 10px 40px;
+    font-size: 25px;
+    text-align: center;
+    width: 200px;
+  }
+
+  .SBInputpassword {
+    width: 80px;
+    padding: 6px 4px;
+    margin: 8px 0px;
+  }
+
+  .SBInput {
+    padding: 6px 4px;
+    width: 220px;
+    font-size: 12px;
+    margin: 8px 0px;
+  }
+
+  .SBBodyDiv {
+    font-size: 13px;
+  }
+
+  .SBSignupButton {
+    margin-top: 18px;
+    font-size: 13px;
+    width: 150px;
+  }
+}

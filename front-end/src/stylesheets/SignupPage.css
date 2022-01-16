@@ -4,7 +4,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 0px 90px;
-  height: calc(100vh - 100px);
+  margin-top: 57px;
+  height: calc(100% - 57px);
 }
 
 .SPImg {
@@ -37,5 +38,48 @@
   .SPImg {
     height: 370px;
     padding-left: 40px;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .SPImg {
+    display: none;
+  }
+
+  .SPMapBox {
+    display: none;
+  }
+
+  .SPBody {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 57px - 85px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .SPBody {
+    height: calc(100vh - 57px - 70px);
+  }
+
+  .SPMapBox {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .SPBody {
+    height: calc(100vh - 57px - 80px);
+  }
+  .SPMapBox {
+    display: block;
+    transform: translateY(-10000px);
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .SPBody {
+    height: calc(100vh - 57px - 90px);
   }
 }

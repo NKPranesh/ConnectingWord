@@ -80,3 +80,64 @@
     margin-right: 10px;
   }
 }
+
+@media screen and (max-width: 1080px) {
+  .LoginBoxDiv {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .LBHeadDiv {
+    padding: 10px 150px;
+  }
+
+  .LBBodyDiv {
+    padding: 30px 0px;
+    font-size: 15px;
+  }
+
+  .LoginBoxDiv {
+    padding-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .LBHeadDiv {
+    padding: 10px 110px;
+  }
+
+  .LBBodyDiv {
+    padding: 30px 0px;
+    font-size: 15px;
+  }
+
+  .LoginBoxDiv {
+    padding-bottom: 0;
+  }
+
+  .LBInput {
+    padding: 6px 4px;
+    width: 220px;
+    margin-top: 2px;
+  }
+
+  .LBHeadDiv {
+    font-size: 25px;
+  }
+
+  .LBBodyDiv {
+    font-size: 13px;
+  }
+
+  .LBLoginButton {
+    font-size: 13px;
+    width: 150px;
+  }
+
+  .LBInput {
+    padding: 6px 4px;
+    font-size: 12px;
+    font-family: 300px;
+  }
+}
