@@ -13,12 +13,12 @@ const port = process.env.PORT || 4000;
 app.use(express.json());
 app.use(cookieParser());
 app.use(function (req, res, next) {
-  // res.setHeader(
-  //   "Access-Control-Allow-Origin",
-  //   "https://connectingworldapp.web.app"
-  // );
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://connectingworldapp.web.app"
+  );
   //test
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  // res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
 
   // Request methods you wish to allow
   res.setHeader(
