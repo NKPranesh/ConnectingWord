@@ -102,7 +102,7 @@ class RequestListBox extends React.Component {
                           this.handleReject(request.email);
                         }}
                       >
-                        Reject
+                        {window.innerWidth > 400 ? "Reject" : "x"}
                       </button>
                       <button
                         className="RLAcceptButton"

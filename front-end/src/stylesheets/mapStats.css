@@ -182,12 +182,15 @@
   }
 
   .GITMobile {
-    max-height: 300px;
+    max-height: 350px;
   }
 
-  .MSPNYListDiv,
-  .MSGITPathListDiv {
+  .MSPNYListDiv {
     max-height: 150px;
+  }
+
+  .MSGITPathListDiv {
+    max-height: 80px;
   }
 
   .MSGITNoSearch {
