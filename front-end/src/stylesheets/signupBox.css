@@ -172,7 +172,7 @@ input[type="number"] {
   }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 400px) {
   .SBHeadDiv {
     padding: 10px 40px;
     font-size: 25px;

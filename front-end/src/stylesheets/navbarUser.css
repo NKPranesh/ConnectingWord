@@ -1,7 +1,23 @@
+/* .NavbarUserDiv {
+  position: fixed;
+  left: 0%;
+  top: 0px;
+  right: 0%;
+  bottom: auto;
+  background-color: #ffffff;
+  display: flex;
+  z-index: 9999;
+  justify-content: space-between;
+  padding: 5px 20px 2px;
+  padding-bottom: 5px;
+  height: 50px;
+  box-sizing: border-box;
+} */
+
 .NavbarUserDiv {
   display: flex;
   /* align-items: center; */
-  z-index: 100;
+  z-index: 9999;
   justify-content: space-between;
   padding: 4px 20px;
   height: 50px;
@@ -11,6 +27,10 @@
 
 .NULogoDiv img {
   height: 40px;
+}
+
+.NUMenuDiv {
+  display: none;
 }
 
 .NUSearchDiv input {
@@ -36,4 +56,115 @@
 
 .NULogoutButton {
   margin-left: 12px;
+}
+
+.NUMenuItemsDiv,
+.NUMenuItemsInitial {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 50px;
+  left: 0;
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 9998;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.98);
+  animation: movedown 0.7s 1;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 4px 6px -5px,
+    rgba(0, 0, 0, 0.3) 0px 4px 3px -5px;
+}
+
+.NUItem {
+  width: 100%;
+  text-align: center;
+  border-top: 0.1px solid #c0bfbf;
+  padding: 20px 0px;
+  font-weight: 450;
+}
+
+.NUMenuItemsInitial {
+  display: none;
+}
+
+.NUMenuItemsDivClose {
+  animation: moveup 1s 1;
+  transform: translateY(-400px);
+  z-index: 9998;
+}
+
+.NUMenuItemsDivOpen {
+  transform: translateY(0px);
+  z-index: 9998;
+}
+
+@media screen and (max-width: 1080px) {
+  .NUSearchDiv input {
+    padding: 8px 6px;
+    width: 500px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .NavbarUserDiv {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 4px 6px -5px,
+      rgba(0, 0, 0, 0.3) 0px 4px 3px -5px;
+    position: fixed;
+    left: 0%;
+    top: 0px;
+    right: 0%;
+    bottom: auto;
+    background-color: #ffffff;
+    padding: 5px 20px 2px;
+    padding-bottom: 5px;
+    margin: 0;
+  }
+
+  .NULogoDiv img {
+    height: 35px;
+  }
+
+  .NUSearchDiv input {
+    padding: 8px 6px;
+    width: 400px;
+  }
+
+  .NUMenuDiv {
+    display: block;
+  }
+
+  .NUButtonsDiv {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .NUSearchDiv input {
+    padding: 6px 4px;
+    width: 230px;
+    font-size: 13px;
+  }
+
+  .NUItem {
+    padding: 10px 0px;
+    font-weight: 450;
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .NUSearchDiv input {
+    padding: 6px 4px;
+    width: 200px;
+    font-size: 13px;
+  }
+
+  .NUItem {
+    padding: 10px 0px;
+    font-weight: 450;
+    font-size: 13px;
+  }
 }

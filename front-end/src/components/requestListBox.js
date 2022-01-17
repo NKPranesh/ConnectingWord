@@ -63,72 +63,148 @@ class RequestListBox extends React.Component {
     this.setData();
   }
   render() {
-    return (
-      <div
-        className={
-          this.props.isDisplay
-            ? "RequestListBoxMainDiv Open"
-            : "RequestListBoxMainDiv Close"
-        }
-      >
-        {this.state.loadingDisplay === true ? (
-          <div className="RLLoadingDiv">
-            <div className="Loading"></div>
-          </div>
-        ) : this.state.display === true ? (
-          this.state.RequestListTable.map((request) => {
-            let index = this.state.RequestListTable.indexOf(request);
-            return (
-              <div className="RLRequestDiv" key={index}>
+    if (this.props.mobile === true)
+      return (
+        <div className="RLMobOuterDiv">
+          <div
+            className={
+              this.props.isDisplay
+                ? "RequestListBoxMobMainDiv MobOpen"
+                : "RequestListBoxMobMainDiv MobClose"
+            }
+          >
+            <div className="RLHeadingDiv">
+              <span className="RLMobHeading">Request List</span>
+              <span className="RLMobCloseButton" onClick={this.props.closeBox}>
+                &#10006;
+              </span>
+            </div>
+            {this.state.loadingDisplay === true ? (
+              <div className="RLLoadingDiv">
+                <div className="Loading"></div>
+              </div>
+            ) : this.state.display === true ? (
+              this.state.RequestListTable.map((request) => {
+                let index = this.state.RequestListTable.indexOf(request);
+                return (
+                  <div className="RLRequestDiv" key={index}>
+                    <div className="RLTextDiv">
+                      <p className="RLName">{request.name}</p>
+                      <p className="RLEmail">{"Email: " + request.email}</p>
+                    </div>
+                    <div className="RLButtonsDiv">
+                      <button
+                        className="RLRejectButton"
+                        onClick={() => {
+                          let newState = { ...this.state };
+                          newState.rejectLoading = true;
+                          this.setState(newState);
+                          this.handleReject(request.email);
+                        }}
+                      >
+                        Reject
+                      </button>
+                      <button
+                        className="RLAcceptButton"
+                        onClick={() => {
+                          let newState = { ...this.state };
+                          newState.acceptLoading = true;
+                          this.setState(newState);
+                          this.handleAccept(request.email);
+                        }}
+                      >
+                        Accept
+                      </button>
+                    </div>
+                  </div>
+                );
+              })
+            ) : (
+              <div className="RLRequestDiv">
                 <div className="RLTextDiv">
-                  <p className="RLName">{request.name}</p>
-                  <p className="RLEmail">{"Email: " + request.email}</p>
-                </div>
-                <div className="RLButtonsDiv">
-                  <button
-                    className="RLRejectButton"
-                    onClick={() => {
-                      let newState = { ...this.state };
-                      newState.rejectLoading = true;
-                      this.setState(newState);
-                      this.handleReject(request.email);
-                    }}
-                  >
-                    Reject
-                  </button>
-                  <button
-                    className="RLAcceptButton"
-                    onClick={() => {
-                      let newState = { ...this.state };
-                      newState.acceptLoading = true;
-                      this.setState(newState);
-                      this.handleAccept(request.email);
-                    }}
-                  >
-                    Accept
-                  </button>
+                  <p className="RLName">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp; You have no Friend Requests.
+                  </p>
                 </div>
               </div>
-            );
-          })
-        ) : (
-          <div className="RLRequestDiv">
-            <div className="RLTextDiv">
-              <p className="RLName">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp; You have no Friend Requests.
-              </p>
+            )}
+            {(this.state.acceptLoading === true ||
+              this.state.rejectLoading === true) && (
+              <div className="RLLoadingDiv">
+                <div className="Loading"></div>
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    else
+      return (
+        <div
+          className={
+            this.props.isDisplay
+              ? "RequestListBoxMainDiv Open"
+              : "RequestListBoxMainDiv Close"
+          }
+        >
+          {this.state.loadingDisplay === true ? (
+            <div className="RLLoadingDiv">
+              <div className="Loading"></div>
             </div>
-          </div>
-        )}
-        {(this.state.acceptLoading === true ||
-          this.state.rejectLoading === true) && (
-          <div className="RLLoadingDiv">
-            <div className="Loading"></div>
-          </div>
-        )}
-      </div>
-    );
+          ) : this.state.display === true ? (
+            this.state.RequestListTable.map((request) => {
+              let index = this.state.RequestListTable.indexOf(request);
+              return (
+                <div className="RLRequestDiv" key={index}>
+                  <div className="RLTextDiv">
+                    <p className="RLName">{request.name}</p>
+                    <p className="RLEmail">{"Email: " + request.email}</p>
+                  </div>
+                  <div className="RLButtonsDiv">
+                    <button
+                      className="RLRejectButton"
+                      onClick={() => {
+                        let newState = { ...this.state };
+                        newState.rejectLoading = true;
+                        this.setState(newState);
+                        this.handleReject(request.email);
+                      }}
+                    >
+                      Reject
+                    </button>
+                    <button
+                      className="RLAcceptButton"
+                      onClick={() => {
+                        let newState = { ...this.state };
+                        newState.acceptLoading = true;
+                        this.setState(newState);
+                        this.handleAccept(request.email);
+                      }}
+                    >
+                      Accept
+                    </button>
+                  </div>
+                </div>
+              );
+            })
+          ) : (
+            <div className="RLRequestDiv">
+              <div className="RLTextDiv">
+                <p className="RLName">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp; You have no Friend Requests.
+                </p>
+              </div>
+            </div>
+          )}
+          {(this.state.acceptLoading === true ||
+            this.state.rejectLoading === true) && (
+            <div className="RLLoadingDiv">
+              <div className="Loading"></div>
+            </div>
+          )}
+        </div>
+      );
   }
 }
 

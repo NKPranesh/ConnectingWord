@@ -123,17 +123,32 @@ class MapStats extends React.Component {
     this.setState(newState);
   };
 
-  getPNYDiv = () => {
+  getPNYDiv = (isMobile) => {
     return (
       <div className="MSPNYDiv">
         <div className="MSPNYLocationDiv">
-          <p className="MSPNYLocationLabel">Your Location</p>
+          <p className="MSPNYLocationLabel">
+            <span className="RLMobHeading">Your Location</span>
+            {isMobile === true && (
+              <span className="RLMobCloseButton" onClick={this.props.PNYClose}>
+                &#10006;
+              </span>
+            )}
+          </p>
           <div
-            style={{
-              height: "220px",
-              width: "100%",
-              paddingBottom: "10px",
-            }}
+            style={
+              window.innerWidth > 768
+                ? {
+                    height: "220px",
+                    width: "100%",
+                    paddingBottom: "10px",
+                  }
+                : {
+                    height: "150px",
+                    width: "100%",
+                    paddingBottom: "10px",
+                  }
+            }
           >
             <LocateUser
               locate={{ latitudeLongitudeUpdate: this.locationHandle }}
@@ -188,22 +203,31 @@ class MapStats extends React.Component {
     );
   };
 
-  getGITDiv = () => {
+  getGITDiv = (isMobile) => {
     // let pathcount=0;
     return (
       <div className="MSGITDiv">
-        {this.state.LocationFlag === false ||
-        this.state.EmailNodesUserTableFlag === false ? (
+        {this.state.EmailNodesUserTableFlag === false ? (
           <div className="PNYLoadingDiv">
             <div className="Loading"></div>
           </div>
         ) : (
           <React.Fragment>
-            <GITSearchBox
-              sendSearchData={{ GITDataHandle: this.gITSearchedDataHandle }}
-              nodesData={this.nodes}
-              userEmail={this.userEmail}
-            />
+            <div className={isMobile === true ? "GITMobileHeader" : ""}>
+              <GITSearchBox
+                sendSearchData={{ GITDataHandle: this.gITSearchedDataHandle }}
+                nodesData={this.nodes}
+                userEmail={this.userEmail}
+              />
+              {isMobile === true && (
+                <span
+                  className="RLMobCloseButton"
+                  onClick={this.props.GITClose}
+                >
+                  &#10006;
+                </span>
+              )}
+            </div>
             {this.state.GITSearchedData === null ? (
               <div className="MSGITNoSearch">
                 <p>Search for the person to get in touch.</p>
@@ -264,40 +288,54 @@ class MapStats extends React.Component {
   };
 
   render() {
-    return (
-      <div className="MapStatsMainDiv">
-        <div className="MSButtonsDiv">
-          <button
-            className={
-              this.state.PNYDisplay ? "MSPNYButton active" : "MSPNYButton"
-            }
-            onClick={() => {
-              let newState = { ...this.state };
-              newState.PNYDisplay = true;
-              newState.GITDisplay = false;
-              this.setState(newState);
-            }}
-          >
-            People Near You
-          </button>
-          <button
-            className={
-              this.state.GITDisplay ? "MSGITButton active" : "MSGITButton"
-            }
-            onClick={() => {
-              let newState = { ...this.state };
-              newState.PNYDisplay = false;
-              newState.GITDisplay = true;
-              this.setState(newState);
-            }}
-          >
-            Get In Touch
-          </button>
+    if (this.props.mobile === true) {
+      if (this.props.PNYStatus === true)
+        return (
+          <div className="PNYMobileOuterDiv">
+            <div className="PNYMobile"> {this.getPNYDiv(true)}</div>
+          </div>
+        );
+      else
+        return (
+          <div className="GITMobileOuterDiv">
+            <div className="GITMobile">{this.getGITDiv(true)}</div>
+          </div>
+        );
+    } else
+      return (
+        <div className="MapStatsMainDiv">
+          <div className="MSButtonsDiv">
+            <button
+              className={
+                this.state.PNYDisplay ? "MSPNYButton active" : "MSPNYButton"
+              }
+              onClick={() => {
+                let newState = { ...this.state };
+                newState.PNYDisplay = true;
+                newState.GITDisplay = false;
+                this.setState(newState);
+              }}
+            >
+              People Near You
+            </button>
+            <button
+              className={
+                this.state.GITDisplay ? "MSGITButton active" : "MSGITButton"
+              }
+              onClick={() => {
+                let newState = { ...this.state };
+                newState.PNYDisplay = false;
+                newState.GITDisplay = true;
+                this.setState(newState);
+              }}
+            >
+              Get In Touch
+            </button>
+          </div>
+          {this.state.PNYDisplay && this.getPNYDiv(false)}
+          {this.state.GITDisplay && this.getGITDiv(false)}
         </div>
-        {this.state.PNYDisplay && this.getPNYDiv()}
-        {this.state.GITDisplay && this.getGITDiv()}
-      </div>
-    );
+      );
   }
 }
 

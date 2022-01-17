@@ -3,3 +3,6 @@
   flex-direction: column;
   overflow: auto;
 }
+.UPMapBox {
+  margin-top: 55px;
+}

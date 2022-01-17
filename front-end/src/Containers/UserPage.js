@@ -40,12 +40,21 @@ const UserPage = () => {
       <NavbarUser />
       <div
         className="UPMapBox"
-        style={{
-          height: "calc(100vh - 60px)",
-          width: "100vw",
-          position: "relative",
-          marginTop: "5px",
-        }}
+        style={
+          window.innerWidth > 768
+            ? {
+                height: "calc(100vh - 60px)",
+                width: "100vw",
+                position: "relative",
+                marginTop: "5px",
+              }
+            : {
+                height: "calc(100vh - 60px)",
+                width: "100vw",
+                position: "relative",
+                marginTop: "55px",
+              }
+        }
       >
         <Map />
       </div>

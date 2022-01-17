@@ -74,7 +74,7 @@
   }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 400px) {
   .LPBody {
     margin-top: 57px;
     height: calc(100vh - 57px - 90px);

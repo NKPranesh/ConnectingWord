@@ -37,6 +37,8 @@
 .MSPNYLocationLabel {
   font-weight: 700;
   padding-bottom: 5px;
+  display: flex;
+  align-items: center;
 }
 .MSPNYLocationResultDiv {
   display: flex;
@@ -110,8 +112,85 @@
   margin: 2px 0px;
 }
 
-@media screen and (max-height: 780px) {
-  .MapStatsMainDiv {
-    max-height: 500px;
+.PNYMobileOuterDiv,
+.GITMobileOuterDiv {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(1.5px);
+  z-index: 100000;
+}
+
+.PNYMobile,
+.GITMobile {
+  width: 450px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: rgb(0 0 0 / 10%) 0px 0px 0px 0px, rgb(0 0 0 / 10%) 0px 4px 11px;
+}
+
+.GITMobileHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 768px) {
+  .PNYMobile,
+  .GITMobile {
+    width: 400px;
+  }
+
+  .GITMobile {
+    max-height: 400px;
+  }
+
+  .MSPNYListDiv,
+  .MSGITPathListDiv {
+    max-height: 150px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .PNYMobile,
+  .GITMobile {
+    width: 400px;
+    font-size: 13px;
+  }
+
+  .GITMobile {
+    max-height: 400px;
+  }
+
+  .MSPNYListDiv,
+  .MSGITPathListDiv {
+    max-height: 150px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .PNYMobile,
+  .GITMobile {
+    width: 290px;
+    font-size: 13px;
+  }
+
+  .GITMobile {
+    max-height: 300px;
+  }
+
+  .MSPNYListDiv,
+  .MSGITPathListDiv {
+    max-height: 150px;
+  }
+
+  .MSGITNoSearch {
+    height: 220px;
   }
 }

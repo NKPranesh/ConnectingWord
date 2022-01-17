@@ -76,3 +76,39 @@
     transform: rotate(360deg);
   }
 }
+
+@media screen and (max-width: 1080px) {
+  .SearchBoxMainDiv {
+    width: 515px;
+  }
+  .SEResultsDiv {
+    width: 515px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .SearchBoxMainDiv {
+    width: 415px;
+  }
+  .SEResultsDiv {
+    width: 415px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .SearchBoxMainDiv {
+    width: 245px;
+  }
+  .SEResultsDiv {
+    width: 245px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .SearchBoxMainDiv {
+    width: 215px;
+  }
+  .SEResultsDiv {
+    width: 215px;
+  }
+}

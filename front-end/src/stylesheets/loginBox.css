@@ -102,7 +102,7 @@
   }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 400px) {
   .LBHeadDiv {
     padding: 10px 110px;
   }

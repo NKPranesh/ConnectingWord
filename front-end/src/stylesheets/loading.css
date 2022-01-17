@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(1.5px);
+  z-index: 10001;
 }
 
 .LoadingDiv {

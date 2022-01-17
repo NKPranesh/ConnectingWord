@@ -129,7 +129,7 @@ class Map extends React.Component {
               />
               {this.state.mapStatsDisplay && (
                 <div className="MapStatsDiv">
-                  <MapStats />
+                  <MapStats mobile={false} />
                 </div>
               )}
             </div>

@@ -33,3 +33,12 @@
 .GITSBSearchResult:hover {
   background-color: rgba(202, 202, 202, 0.59);
 }
+
+@media screen and (max-width: 400px) {
+  .GITSBInput {
+    width: 200px;
+  }
+  .GITSBMainDiv {
+    width: 200px;
+  }
+}

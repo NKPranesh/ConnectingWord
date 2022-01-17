@@ -78,7 +78,7 @@
   }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 400px) {
   .SPBody {
     height: calc(100vh - 57px - 90px);
   }
