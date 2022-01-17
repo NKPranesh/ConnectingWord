@@ -132,8 +132,8 @@ class NavbarUser extends React.Component {
             <a
               className={
                 this.state.menuDisplay === true
-                  ? "MenuOpen Menu"
-                  : "MenuClose Menu"
+                  ? "MenuOpen Menu NUMenu"
+                  : "MenuClose Menu NUMenu"
               }
               onClick={this.menuDisplayHandle}
             >

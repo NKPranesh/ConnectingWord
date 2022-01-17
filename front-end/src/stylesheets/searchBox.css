@@ -92,6 +92,12 @@
   }
   .SEResultsDiv {
     width: 415px;
+    font-size: 13px;
+  }
+  .SEAddFriendButton,
+  .SEFriendRequestSent,
+  .SEFriends {
+    font-size: 12px;
   }
 }
 

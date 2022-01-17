@@ -120,7 +120,13 @@
     background-color: #ffffff;
     padding: 5px 20px 2px;
     padding-bottom: 5px;
+    padding-top: 5px;
     margin: 0;
+  }
+
+  .NUMenu {
+    margin: 0;
+    padding: 0;
   }
 
   .NULogoDiv img {
