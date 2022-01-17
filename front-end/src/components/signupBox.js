@@ -132,6 +132,17 @@ const SignupBox = (props) => {
             />
           </div>
         </div>
+        <div className="SBPrivacyPolicy">
+          By submitting you agree to our{" "}
+          <a
+            href="https://www.termsfeed.com/live/ec278a4f-abd4-4c6c-bdfb-0dd13e12a441"
+            target="_blank"
+            className="PrivacyPolicyLink"
+          >
+            Privacy Policy
+          </a>{" "}
+          and consent your information being sent to ConnectingWorld consultant.
+        </div>
         <div className="SBSignupButtonDiv">
           <button className="SBSignupButton" onClick={submitButtonHandle}>
             Signup

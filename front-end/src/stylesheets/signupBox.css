@@ -16,6 +16,19 @@
   font-weight: bold;
   border-bottom: 1px solid black;
 }
+
+.SBPrivacyPolicy {
+  width: 310px;
+  font-size: 10px;
+  margin: 5px 0px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.PrivacyPolicyLink {
+  color: rgba(103, 83, 253, 1);
+}
+
 .SBBodyDiv {
   padding: 20px 0px;
   font-size: 14px;
@@ -145,6 +158,9 @@ input[type="number"] {
     text-align: center;
     width: 200px;
   }
+  .SBPrivacyPolicy {
+    width: 300px;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -153,6 +169,10 @@ input[type="number"] {
     font-size: 28px;
     text-align: center;
     width: 200px;
+  }
+
+  .SBPrivacyPolicy {
+    width: 280px;
   }
 
   .SBInputpassword {
@@ -184,6 +204,14 @@ input[type="number"] {
     width: 80px;
     padding: 6px 4px;
     margin: 8px 0px;
+  }
+
+  .SBPrivacyPolicy {
+    width: 250px;
+  }
+
+  .SBPrivacyPolicy a {
+    font-size: 10px;
   }
 
   .SBInput {
