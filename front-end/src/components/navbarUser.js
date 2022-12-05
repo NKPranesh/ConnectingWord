@@ -27,7 +27,7 @@ class NavbarUser extends React.Component {
 
   getList = async () => {
     let data = [];
-    await fetch("https://connectingworld-api.herokuapp.com/user-request-list", {
+    await fetch("https://connectingworld-api.cyclic.app/user-request-list", {
       method: "get",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
@@ -72,7 +72,7 @@ class NavbarUser extends React.Component {
     newState.logoutLoadingDisplay = true;
     this.setState(newState);
 
-    await fetch("https://connectingworld-api.herokuapp.com/logout", {
+    await fetch("https://connectingworld-api.cyclic.app/logout", {
       method: "get",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

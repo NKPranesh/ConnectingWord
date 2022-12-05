@@ -51,7 +51,7 @@ class Map extends React.Component {
   };
 
   setEdgesData = async () => {
-    await fetch("https://connectingworld-api.herokuapp.com/friends-list", {
+    await fetch("https://connectingworld-api.cyclic.app/friends-list", {
       method: "get",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

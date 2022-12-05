@@ -28,7 +28,7 @@ const SignupBox = (props) => {
 
     setLoadingDisplay(true);
 
-    await fetch("https://connectingworld-api.herokuapp.com/signup", {
+    await fetch("https://connectingworld-api.cyclic.app/signup", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

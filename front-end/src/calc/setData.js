@@ -4,7 +4,7 @@ let friendsList = [];
 let userEmail = null;
 
 const setData = async () => {
-  await fetch("https://connectingworld-api.herokuapp.com/usertable", {
+  await fetch("https://connectingworld-api.cyclic.app/usertable", {
     method: "get",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
@@ -17,7 +17,7 @@ const setData = async () => {
       console.log(error);
     });
 
-  await fetch("https://connectingworld-api.herokuapp.com/requests-list", {
+  await fetch("https://connectingworld-api.cyclic.app/requests-list", {
     method: "get",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
@@ -30,7 +30,7 @@ const setData = async () => {
       console.log(error);
     });
 
-  await fetch("https://connectingworld-api.herokuapp.com/friends-list", {
+  await fetch("https://connectingworld-api.cyclic.app/friends-list", {
     method: "get",
     headers: { "Content-Type": "application/json" },
     credentials: "include",

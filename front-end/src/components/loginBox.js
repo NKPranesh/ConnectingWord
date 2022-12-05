@@ -15,7 +15,7 @@ const LoginBox = () => {
 
     setLoadingDisplay(true);
 
-    await fetch("https://connectingworld-api.herokuapp.com/login", {
+    await fetch("https://connectingworld-api.cyclic.app/login", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
